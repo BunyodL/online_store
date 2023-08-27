@@ -1,0 +1,25 @@
+.sorting {
+  display: flex;
+  margin-top: 5px;
+}
+
+.cardBasis {
+  outline: 0px solid rgb(0, 0, 0);
+  outline-offset: -1px;
+  transition: outline-width 100ms ease;
+  cursor: pointer;
+}
+
+.cardBasis:hover,
+.cardBasis:focus {
+  outline-width: 1px;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .rating .count {
+  display: flex;
+} */
