@@ -3,8 +3,9 @@ import Box from '@mui/material/Box';
 import MobileRightSideMenu from './MobileHeader/MobileRightSideMenu';
 import RightSideProfileMenu from './RightSideProfileMenu';
 import AppHeader from './AppHeader';
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = ({ isAuth }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -38,6 +39,7 @@ const Header = () => {
         handleProfileMenuOpen={handleProfileMenuOpen}
         mobileMenuId={mobileMenuId}
         handleMobileMenuOpen={handleMobileMenuOpen}
+        isAuth={isAuth}
       />
       <MobileRightSideMenu
         mobileMoreAnchorEl={mobileMoreAnchorEl}
@@ -51,4 +53,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, null)(Header);

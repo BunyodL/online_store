@@ -1,42 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid } from '@mui/material';
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard/ProductCard';
+import ModalProductCard from '../ModalProductCard/ModalProductCard';
+import { useProductsSelector } from '../../core/hooks/useMySelectors';
+import { useDispatch } from 'react-redux';
+import { setOpenModal, setSearching } from '../../redux-store/reducers/product-reducer';
+import { productsOrder } from '../common/CategoriesAndSorting/Sorting/productsOrder';
 
-const ProductList = ({ products, sort }) => {
-  const productsOrder = (allProducts, productSort) => {
-    switch (productSort) {
-      case 'name': {
-        return [...allProducts].sort((a, b) => a.title.localeCompare(b.title));
-      }
-      case 'rating': {
-        return [...allProducts].sort((a, b) => b.rating.rate - a.rating.rate);
-      }
-      case 'count': {
-        return [...allProducts].sort((a, b) => b.rating.count - a.rating.count);
-      }
-      case 'price': {
-        return [...allProducts].sort((a, b) => b.price - a.price);
-      }
-      default:
-        return allProducts;
-    }
+const ProductList = ({ products, searchText, getCurrentProduct }) => {
+  const { openModal, searching, sort } = useProductsSelector();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // ЛИШНИЕ РЕРЕНДЕРЫ!!!
+    console.log('SEARCHING RENDERS');
+    const searchedProducts = products.filter(elem => elem.title.toLowerCase().includes(searchText));
+    dispatch(setSearching(searchedProducts));
+  }, [searchText, products, dispatch]);
+
+  const handleProductId = productId => {
+    dispatch(setOpenModal(true));
+    dispatch(getCurrentProduct(productId));
   };
 
   return (
-    <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{ marginBlock: 10 }}>
-      {productsOrder(products, sort).map(i => (
-        <Grid item lg={3} md={4} key={i.id}>
-          <ProductCard
-            title={i.title}
-            image={i.image}
-            description={i.description}
-            rating={i.rating}
-            price={i.price}
-            category={i.category}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      {!searching.length && <h1>No products found</h1>}
+      <ModalProductCard openModal={openModal} setOpenModal={setOpenModal} />
+      <Grid container spacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }} style={{ marginBlock: 10 }}>
+        {productsOrder(searching, sort).map(i => (
+          <Grid item lg={3} md={3} sm={4} xs={6} key={i.id}>
+            <ProductCard
+              productId={i.id}
+              title={i.title}
+              image={i.image}
+              rating={i.rating}
+              price={i.price}
+              handleProductId={handleProductId}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 };
 

@@ -18,7 +18,7 @@ const MenuProps = {
   },
 };
 
-const categories = ["Men's clothing", "Women's clothing", 'Jewelry', 'Electronics'];
+const categories = ["Men's clothing", "Women's clothing", 'Jewelery', 'Electronics'];
 
 const Categories = ({ category, handleCategoryChange }) => {
   return (

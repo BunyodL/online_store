@@ -1,0 +1,63 @@
+.cardBasis {
+  outline: 0px solid rgb(0, 0, 0);
+  outline-offset: -1px;
+  transition: outline-width 100ms ease;
+  cursor: pointer;
+  max-height: 320px;
+  padding: 0;
+}
+
+.cardBasis:hover,
+.cardBasis:focus {
+  outline-width: 1px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 50px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 6px 3px;
+}
+
+.leftSide .count {
+  height: 30%;
+}
+
+.leftSide .price {
+  height: 30%;
+}
+
+.leftSide .infoButton {
+  height: 30%;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  min-height: 35px;
+  justify-content: space-between;
+  padding-right: 5px;
+  box-sizing: border-box;
+}
+
+.rightSide .rating {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-self: flex-start;
+  width: 100%;
+
+}
+
+.rightSide button {
+  border: 1px solid rgb(25, 118, 210);
+  transition: 0.4s;
+}
+
+.rightSide button:hover {
+  background-color: white;
+  color: rgb(25, 118, 210);
+}

@@ -1,26 +1,40 @@
 import React, { useEffect } from 'react';
 import ProductPage from './ProductPage';
-import { getProducts } from '../../redux-store/reducers/product-reducer';
-import { connect } from 'react-redux';
+import {
+  getProducts,
+  setSearchText,
+  setCategory,
+  setSort,
+  setProductsCategories,
+  getCurrentProduct,
+} from '../../redux-store/reducers/product-reducer';
+import { useDispatch } from 'react-redux';
 import Preloader from '../../components/common/Preloader/Preloader';
+import { Navigate } from 'react-router-dom';
+import { useProductsSelector } from '../../core/hooks/useMySelectors';
 
-const ProductPageContainer = ({ getProducts, products, isFetching, errorMessage }) => {
+const ProductPageContainer = () => {
+  const { isFetching } = useProductsSelector();
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    dispatch(getProducts());
+  }, []);
+
+  // if (!isAuth) return <Navigate to={'/login'} />;
 
   return (
     <>
       {isFetching && <Preloader isFetching={isFetching} />}
-      <ProductPage products={products} errorMessage={errorMessage} />
+      <ProductPage
+        setSearchText={setSearchText}
+        setCategory={setCategory}
+        setSort={setSort}
+        setProductsCategories={setProductsCategories}
+        getCurrentProduct={getCurrentProduct}
+      />
     </>
   );
 };
 
-const mapStateToProps = state => ({
-  products: state.products.products,
-  isFetching: state.products.isFetching,
-  errorMessage: state.products.errorMessage,
-});
-
-export default connect(mapStateToProps, { getProducts })(ProductPageContainer);
+export default ProductPageContainer;
