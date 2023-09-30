@@ -2,17 +2,20 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import SignInButton from '../RightSide/Sign/SignInButton';
 
-const MobileRightSideIcon = ({ mobileMenuId, handleMobileMenuOpen }) => {
+const MobileRightSideIcon = ({ mobileMenuId, handleMobileMenuOpen, isAuth }) => {
   return (
     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+      {!isAuth && <SignInButton />}
       <IconButton
-        size='large'
-        aria-label='show more'
+        size="large"
+        aria-label="show more"
         aria-controls={mobileMenuId}
-        aria-haspopup='true'
+        aria-haspopup="true"
         onClick={handleMobileMenuOpen}
-        color='inherit'>
+        color="inherit"
+      >
         <MoreIcon />
       </IconButton>
     </Box>

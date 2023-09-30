@@ -1,46 +1,34 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import MobileRightSideMenu from './MobileHeader/MobileRightSideMenu';
-import RightSideProfileMenu from './RightSideProfileMenu';
+import MobileRightSideMenu from './HeaderRightSide/MobileRightSide/MobileRightSideMenu';
+import RightSideProfileMenu from './HeaderRightSide/RightSideProfileMenu';
 import AppHeader from './AppHeader';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useHeaderSelector } from '../../core/hooks/useMySelectors';
+import { setAnchorEl, setMobileMoreAnchorEl } from '../../redux-store/reducers/header-reducer';
 
-const Header = ({ isAuth }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
-
+const Header = () => {
+  const dispatch = useDispatch();
+  const { anchorEl, mobileMoreAnchorEl, menuId, mobileMenuId } = useHeaderSelector();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
+  const handleProfileMenuOpen = event => dispatch(setAnchorEl(event.currentTarget));
+  const handleMobileMenuClose = () => dispatch(setMobileMoreAnchorEl(null));
   const handleMenuClose = () => {
-    setAnchorEl(null);
+    dispatch(setAnchorEl(null));
     handleMobileMenuClose();
   };
-
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = 'primary-search-account-menu';
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const handleMobileMenuOpen = event => dispatch(setMobileMoreAnchorEl(event.currentTarget));
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: 'fixed', width: '100%', zIndex: 99 }}>
       <AppHeader
-        menuId={menuId}
         handleProfileMenuOpen={handleProfileMenuOpen}
         mobileMenuId={mobileMenuId}
         handleMobileMenuOpen={handleMobileMenuOpen}
-        isAuth={isAuth}
       />
+      <div style={{ backgroundColor: 'white', height: 10, zIndex: 98 }}></div>
       <MobileRightSideMenu
         mobileMoreAnchorEl={mobileMoreAnchorEl}
         mobileMenuId={mobileMenuId}
@@ -48,13 +36,10 @@ const Header = ({ isAuth }) => {
         handleMobileMenuClose={handleMobileMenuClose}
         handleProfileMenuOpen={handleProfileMenuOpen}
       />
-      <RightSideProfileMenu anchorEl={anchorEl} menuId={menuId} isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose} />
+      <RightSideProfileMenu anchorEl={anchorEl} menuId={menuId} isMenuOpen={isMenuOpen}
+                            handleMenuClose={handleMenuClose} />
     </Box>
   );
 };
 
-const mapStateToProps = state => ({
-  isAuth: state.auth.isAuth,
-});
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;

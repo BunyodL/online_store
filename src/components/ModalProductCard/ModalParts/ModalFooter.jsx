@@ -1,5 +1,5 @@
 import React from 'react';
-import st from './ModalProductCard.module.css';
+import st from '../ModalProductCard.module.css';
 import { CardActions } from '@mui/material';
 import Rating from '@mui/material/Rating';
 

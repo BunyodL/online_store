@@ -6,19 +6,16 @@ const instance = axios.create({
 
 export const productsAPI = {
   async getAllProducts() {
-    const response = await instance.get('products');
-    return response;
+    return await instance.get('products');
   },
   async getCurrentProduct(productId) {
-    const response = await instance.get(`products/${productId}`);
-    return response;
+    return await instance.get(`products/${productId}`);
   },
 };
 
 export const authAPI = {
   async login(username, password) {
-    const response = await instance.post('auth/login', { username, password });
-    return response;
+    return await instance.post('auth/login', { username, password });
   },
 };
 

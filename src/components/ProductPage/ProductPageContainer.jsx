@@ -1,17 +1,11 @@
 import React, { useEffect } from 'react';
 import ProductPage from './ProductPage';
-import {
-  getProducts,
-  setSearchText,
-  setCategory,
-  setSort,
-  setProductsCategories,
-  getCurrentProduct,
-} from '../../redux-store/reducers/product-reducer';
+import { getProducts, getCurrentProduct } from '../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
 import Preloader from '../../components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 import { useProductsSelector } from '../../core/hooks/useMySelectors';
+import { setCategory, setProductsWithCategories, setSearchText, setSort } from '../../redux-store/reducers/sequence-reducer';
 
 const ProductPageContainer = () => {
   const { isFetching } = useProductsSelector();
@@ -30,7 +24,7 @@ const ProductPageContainer = () => {
         setSearchText={setSearchText}
         setCategory={setCategory}
         setSort={setSort}
-        setProductsCategories={setProductsCategories}
+        setProductsWithCategories={setProductsWithCategories}
         getCurrentProduct={getCurrentProduct}
       />
     </>

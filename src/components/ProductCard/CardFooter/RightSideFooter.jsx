@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import st from '../ProductCard.module.css';
 
-const RightSideFooter = ({ rating }) => {
+const RightSideFooter = ({ rating, productId, handleAddToCart }) => {
   return (
     <div className={st.rightSide}>
       <div className={st.rating}>
@@ -28,6 +28,7 @@ const RightSideFooter = ({ rating }) => {
           }}
           size='small'
           variant='contained'
+          onClick={() => handleAddToCart(productId)}
         >
           Add to cart
         </Button>

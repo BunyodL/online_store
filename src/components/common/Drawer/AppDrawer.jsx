@@ -19,7 +19,7 @@ const AppDrawer = ({ drawerSide, DrawerIcon, children }) => {
   const list = anchor => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 260 }}
-      role='presentation'
+      // role='presentation'
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}>
       {children}

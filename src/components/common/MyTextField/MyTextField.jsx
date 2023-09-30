@@ -15,7 +15,7 @@ const MyTextField = ({ searchText, setSearchText }) => {
       id='standard-basic'
       label='Search'
       variant='standard'
-      sx={{ marginBlock: 2 }}
+      sx={{ marginBottom: 2, marginTop: 10 }}
       onChange={handleTextChange}
       value={searchText}
     />

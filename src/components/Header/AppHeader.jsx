@@ -2,36 +2,24 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import AppDrawer from '../common/Drawer/AppDrawer';
-import MobileRightSideIcon from './MobileHeader/MobileRightSideIcon';
-import RightSideIcons from './RightSideIcons';
-import { Button } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import MobileRightSideIcon from './HeaderRightSide/MobileRightSide/MobileRightSideIcon';
+import RightSideHeader from './HeaderRightSide/RightSideHeader';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuthSelector } from '../../core/hooks/useMySelectors';
+import StoreName from './StoreName';
 
-const AppHeader = ({ menuId, handleProfileMenuOpen, mobileMenuId, handleMobileMenuOpen, isAuth }) => {
+const AppHeader = ({ handleProfileMenuOpen, mobileMenuId, handleMobileMenuOpen }) => {
+  const { isAuth } = useAuthSelector();
+
   return (
-    <AppBar position='static'>
+    <AppBar position="static">
       <Toolbar>
         {isAuth && <AppDrawer drawerSide={'left'} DrawerIcon={MenuIcon}></AppDrawer>}
-        <Typography variant='h6' noWrap component='div' sx={{ display: { xs: 'none', sm: 'block' } }}>
-          Experimental Store
-        </Typography>
+        <StoreName storeName={'Experimental Store'} />
         <Box sx={{ flexGrow: 1 }} />
-        {!isAuth && (
-          <NavLink to={'/login'} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-            <Button size='small' color='inherit'>
-              Sign in
-            </Button>
-          </NavLink>
-        )}
-        {isAuth && (
-          <>
-            <RightSideIcons menuId={menuId} handleProfileMenuOpen={handleProfileMenuOpen} />
-            <MobileRightSideIcon mobileMenuId={mobileMenuId} handleMobileMenuOpen={handleMobileMenuOpen} />
-          </>
-        )}
+        <RightSideHeader handleProfileMenuOpen={handleProfileMenuOpen} isAuth={isAuth} />
+        <MobileRightSideIcon mobileMenuId={mobileMenuId} handleMobileMenuOpen={handleMobileMenuOpen} isAuth={isAuth} />
       </Toolbar>
     </AppBar>
   );

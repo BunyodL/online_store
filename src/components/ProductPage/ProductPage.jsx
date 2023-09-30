@@ -1,22 +1,27 @@
-import { Container } from '@mui/material';
 import React, { useEffect } from 'react';
+import { Container } from '@mui/material';
 import ProductList from '../ProductList/ProductList';
 import { useDispatch } from 'react-redux';
-import { useProductsSelector } from '../../core/hooks/useMySelectors';
+import { useProductsSelector, useSequenceSelector } from '../../core/hooks/useMySelectors';
 import CategoriesAndSorting from '../common/CategoriesAndSorting/CategoriesAndSorting';
 import { filterCategories } from '../common/CategoriesAndSorting/Categories/filterCategories';
 import MyTextField from '../common/MyTextField/MyTextField';
 
-const ProductPage = ({ setSearchText, setCategory, setSort, setProductsCategories, getCurrentProduct }) => {
-  const { products, errorMessage, searchText, category, productsCategories } = useProductsSelector();
+const ProductPage = ({
+                       setSearchText,
+                       setCategory,
+                       setSort,
+                       setProductsWithCategories,
+                       getCurrentProduct
+                     }) => {
+  const { products, errorMessage } = useProductsSelector();
+  const { searchText, category, productsWithCategories } = useSequenceSelector();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // ВЫПОЛНЯЮТСЯ НЕНУЖНЫЕ РЕНДЕРЫ!!!
-    console.log('CATEG RENDERS');
     const productsCategories = filterCategories(products, category);
-    dispatch(setProductsCategories(productsCategories));
-  }, [products, category, dispatch, setProductsCategories]);
+    dispatch(setProductsWithCategories(productsCategories));
+  }, [products, category, dispatch, setProductsWithCategories]);
 
   return (
     <>
@@ -28,7 +33,7 @@ const ProductPage = ({ setSearchText, setCategory, setSort, setProductsCategorie
             <MyTextField searchText={searchText} setSearchText={setSearchText} />
             <CategoriesAndSorting setCategory={setCategory} setSort={setSort} />
             <ProductList
-              products={category.length ? productsCategories : products}
+              products={category.length ? productsWithCategories : products}
               searchText={searchText}
               getCurrentProduct={getCurrentProduct}
             />

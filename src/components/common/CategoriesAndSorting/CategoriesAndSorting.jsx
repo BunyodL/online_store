@@ -2,11 +2,11 @@ import React from 'react';
 import Categories from './Categories/Categories';
 import Sorting from './Sorting/Sorting';
 import { useDispatch } from 'react-redux';
-import { useProductsSelector } from '../../../core/hooks/useMySelectors';
+import { useSequenceSelector } from '../../../core/hooks/useMySelectors';
 import st from '../../ProductPage/ProductPage.module.css';
 
 const CategoriesAndSorting = ({ setCategory, setSort }) => {
-  const { category, sort } = useProductsSelector();
+  const { category, sort } = useSequenceSelector();
   const dispatch = useDispatch();
 
   const handleCategoryChange = event => {
@@ -15,7 +15,6 @@ const CategoriesAndSorting = ({ setCategory, setSort }) => {
     } = event;
     dispatch(
       setCategory(
-        // On autofill we get a stringified value.
         typeof value === 'string' ? value.split(',') : value
       )
     );

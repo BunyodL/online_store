@@ -17,7 +17,8 @@ const RightSideProfileMenu = ({ anchorEl, menuId, isMenuOpen, handleMenuClose })
         horizontal: 'right',
       }}
       open={isMenuOpen}
-      onClose={handleMenuClose}>
+      onClose={handleMenuClose}
+    >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>

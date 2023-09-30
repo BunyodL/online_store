@@ -6,6 +6,7 @@ const MyForm = ({ values, errors, touched, handleChange, handleBlur, handleSubmi
     <form onSubmit={handleSubmit} className={st.formContainer}>
       <div className={st.form}>
         <h1>Authorization!</h1>
+        {/*login input*/}
         <div className={st.email}>
           <div className={st.emailInput}>
             <label htmlFor='email'>Username:</label>
@@ -13,6 +14,7 @@ const MyForm = ({ values, errors, touched, handleChange, handleBlur, handleSubmi
           </div>
           {errors.email && touched.email && errors.email}
         </div>
+        {/*password input*/}
         <div className={st.password}>
           <div className={st.passwordInput}>
             <label htmlFor='password'>Password:</label>
@@ -27,6 +29,7 @@ const MyForm = ({ values, errors, touched, handleChange, handleBlur, handleSubmi
           </div>
           {errors.password && touched.password && errors.password}
         </div>
+        {/*submit button*/}
         <button type='submit' disabled={isSubmitting}>
           {isSubmitting ? 'Signing in...' : 'Sign in'}
         </button>

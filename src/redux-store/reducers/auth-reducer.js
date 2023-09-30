@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { authAPI } from '../../api/api';
 
 export const login = createAsyncThunk('auth/login', async (loginData, thunkAPI) => {
-  const response = await authAPI.login(loginData.email, loginData.password);
-  return response;
+  return await authAPI.login(loginData.email, loginData.password);
 });
 
 const authReducer = createSlice({
@@ -11,7 +10,6 @@ const authReducer = createSlice({
   initialState: {
     isAuth: false,
     username: null,
-    userLogin: null,
     password: null,
     errorMessage: null,
     isFetching: false,

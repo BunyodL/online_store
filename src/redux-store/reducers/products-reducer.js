@@ -6,12 +6,12 @@ export const getProducts = createAsyncThunk('products/getProductsStatus', async 
   return response.data;
 });
 
-export const getCurrentProduct = createAsyncThunk('products/getCurrentProductStatus', async (productId) => {
+export const getCurrentProduct = createAsyncThunk('products/getCurrentProductStatus', async productId => {
   const response = await productsAPI.getCurrentProduct(productId);
   return response.data;
 });
 
-const productReducer = createSlice({
+const productsReducer = createSlice({
   name: 'products',
   initialState: {
     products: [],
@@ -19,34 +19,22 @@ const productReducer = createSlice({
     isFetching: false,
     errorMessage: null,
     openModal: false,
-    searchText: '',
-    category: [],
-    productsCategories: [],
-    sort: '',
-    searching: [],
+    openAlert: false,
+    alert: {},
   },
   reducers: {
-    setSearchText(state, action) {
-      state.searchText = action.payload;
-    },
-    setCategory(state, action) {
-      state.category = action.payload;
-    },
-    setSort(state, action) {
-      state.sort = action.payload;
-    },
     setOpenModal(state, action) {
       state.openModal = action.payload;
     },
-    setSearching(state, action) {
-      state.searching = action.payload;
+    setOpenAlert(state, action) {
+      state.openAlert = action.payload;
     },
-    setProductsCategories(state, action) {
-      state.productsCategories = action.payload;
+    setAlert(state, action) {
+      state.alert = action.payload;
     },
   },
   extraReducers: builder => {
-    builder.addCase(getProducts.pending, (state, action) => {
+    builder.addCase(getProducts.pending, (state) => {
       state.isFetching = true;
     });
     builder.addCase(getProducts.fulfilled, (state, action) => {
@@ -57,7 +45,7 @@ const productReducer = createSlice({
       state.errorMessage = action.error.message;
       state.isFetching = false;
     });
-    builder.addCase(getCurrentProduct.pending, (state, action) => {
+    builder.addCase(getCurrentProduct.pending, (state) => {
       state.isFetching = true;
     });
     builder.addCase(getCurrentProduct.fulfilled, (state, action) => {
@@ -68,23 +56,12 @@ const productReducer = createSlice({
       state.errorMessage = action.error.message;
       state.isFetching = false;
     });
-
   },
 });
 
-// Thunk creators
-// export const getProducts = () => async dispatch => {
-//   try {
-//     dispatch(toggleIsFetching(true));
-//     const response = await productsAPI.getAllProducts();
-//     dispatch(getProductsSuccess(response.data));
-//   } catch (error) {
-//     dispatch(getProductsError(error))
-//   } finally {
-//     dispatch(toggleIsFetching(false));
-//   }
-// };
-
-export const { setSearchText, setCategory, setSort, setOpenModal, setSearching, setCurrentProductId, setProductsCategories } =
-  productReducer.actions;
-export default productReducer.reducer;
+export const {
+  setOpenModal,
+  setAlert,
+  setOpenAlert
+} = productsReducer.actions;
+export default productsReducer.reducer;

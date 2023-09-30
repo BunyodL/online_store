@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '@mui/joy/Modal';
 import { useDispatch } from 'react-redux';
-import ModalSheet from './ModalSheet';
+import ModalSheet from './ModalParts/ModalSheet';
 
 const ModalProductCard = ({ openModal, setOpenModal }) => {
   const dispatch = useDispatch();
