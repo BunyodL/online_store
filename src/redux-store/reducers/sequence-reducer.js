@@ -28,6 +28,12 @@ const sequenceReducer = createSlice({
   },
 });
 
-export const { setSearchText, setCategory, setProductsWithCategories, setSort, setSearching } = sequenceReducer.actions;
+export const {
+  setSearchText,
+  setCategory,
+  setProductsWithCategories,
+  setSort,
+  setSearching
+} = sequenceReducer.actions;
 
 export default sequenceReducer.reducer;

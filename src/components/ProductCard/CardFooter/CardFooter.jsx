@@ -10,8 +10,9 @@ const CardFooter = ({ productId, rating, price, handleProductId, handleAddToCart
         display: 'flex',
         justifyContent: 'space-between',
         padding: 0,
+        marginTrim: 0,
         height: { lg: 80, md: 70, sm: 60, xs: 60 },
-        fontSize: { lg: 16, md: 14, sm: 13, xs: 9.5 },
+        fontSize: { lg: 18, md: 17, sm: 15, xs: 10 },
       }}
     >
       <LeftSideFooter rating={rating} price={price} productId={productId} handleProductId={handleProductId} />

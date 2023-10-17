@@ -4,8 +4,8 @@ import { Divider } from '@mui/material';
 import CardFooter from './CardFooter/CardFooter';
 import CardBasis from './CardBasis';
 import { useDispatch } from 'react-redux';
-import { useCartSelector } from '../../core/hooks/useMySelectors';
-import { setOpenAlert } from '../../redux-store/reducers/products-reducer';
+import { useProductsSelector } from '../../core/hooks/useMySelectors';
+import { setOpenAlert, setProductsToCart } from '../../redux-store/reducers/products-reducer';
 
 const ProductCard = ({
                        productId,
@@ -14,42 +14,8 @@ const ProductCard = ({
                        rating,
                        price,
                        handleProductId,
-                       handleAlertMessage,
-                       setProductsInCart
+                       handleAddToCart,
                      }) => {
-
-  const { productsInCart, errorMessage } = useCartSelector();
-  const dispatch = useDispatch();
-
-  // adding product to the cart and showing alert
-  const handleAddToCart = productId => {
-    if (!productsInCart.some(elem => elem.id === productId)) {
-      dispatch(setProductsInCart(productId));
-      if (errorMessage) {
-        handleAlertMessage('error', errorMessage);
-      } else {
-        handleAlertMessage('success', 'Product added to cart!');
-      }
-    } else {
-      handleAlertMessage('warning', 'This product is already in the cart!');
-    }
-    dispatch(setOpenAlert(true));
-  };
-
-  // const handleRemoveFromCart = productId => {
-  //   if (!productsInCart.some(elem => elem.id === productId)) {
-  //     dispatch(setProductsInCart(productId));
-  //     if (errorMessage) {
-  //       handleAlertMessage('error', errorMessage);
-  //     } else {
-  //       handleAlertMessage('success', 'Product removed from cart!');
-  //     }
-  //     dispatch(setOpenAlert(true));
-  //   }
-  //   if (!productsInCart.length) {
-  //     'No products added to cart'
-  //   }
-  // };
 
   return (
     <Card>

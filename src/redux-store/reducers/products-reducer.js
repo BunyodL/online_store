@@ -15,6 +15,7 @@ const productsReducer = createSlice({
   name: 'products',
   initialState: {
     products: [],
+    productsInCart: [],
     currentProduct: {},
     isFetching: false,
     errorMessage: null,
@@ -31,6 +32,28 @@ const productsReducer = createSlice({
     },
     setAlert(state, action) {
       state.alert = action.payload;
+    },
+    setProductsToCart(state, action) {
+      const addedProduct = {
+        ...state.products.reduce((acc, elem) =>
+          elem.id === action.payload.productId ? acc = elem : acc, null),
+        quantity: action.payload.quantity
+      };
+      state.productsInCart.push(addedProduct);
+    },
+    removeProductsFromCart(state, action) {
+      state.productsInCart = state.productsInCart.filter(elem => elem.id !== action.payload);
+    },
+    setProductQuantity(state, action) {
+      state.productsInCart.filter((elem => {
+        if (elem.id === action.payload.productId) {
+          if (action.payload.case === '+') {
+            return elem.quantity += 1;
+          } else {
+            return elem.quantity -= 1;
+          }
+        }
+      }));
     },
   },
   extraReducers: builder => {
@@ -62,6 +85,9 @@ const productsReducer = createSlice({
 export const {
   setOpenModal,
   setAlert,
-  setOpenAlert
+  setOpenAlert,
+  setProductsToCart,
+  removeProductsFromCart,
+  setProductQuantity,
 } = productsReducer.actions;
 export default productsReducer.reducer;

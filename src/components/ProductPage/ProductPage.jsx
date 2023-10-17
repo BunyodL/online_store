@@ -19,6 +19,7 @@ const ProductPage = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('Filter Categories');
     const productsCategories = filterCategories(products, category);
     dispatch(setProductsWithCategories(productsCategories));
   }, [products, category, dispatch, setProductsWithCategories]);

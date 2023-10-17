@@ -5,15 +5,15 @@ import st from '../ProductCard.module.css';
 
 const RightSideFooter = ({ rating, productId, handleAddToCart }) => {
   return (
-    <div className={st.rightSide}>
+    <div id={st.rightSideId} className={st.rightSide}>
       <div className={st.rating}>
         <span>{rating.rate}</span>
         <Rating
           sx={{
-            fontSize: { lg: 15, md: 13, sm: 11, xs: 9 },
+            fontSize: { lg: 17, md: 15, sm: 14, xs: 10 },
           }}
-          size='small'
-          name='half-rating-read'
+          size="small"
+          name="half-rating-read"
           value={rating.rate}
           readOnly
         />
@@ -23,11 +23,12 @@ const RightSideFooter = ({ rating, productId, handleAddToCart }) => {
           fullWidth
           sx={{
             padding: 0.2,
-            fontSize: { lg: 12, md: 9, sm: 7.5, xs: 6 },
+            fontSize: { lg: 12, md: 11, sm: 9, xs: 7.5 },
             minWidth: '100%',
+            width: { lg: 100, md: 95, sm: 80, xs: 60 }
           }}
-          size='small'
-          variant='contained'
+          size="small"
+          variant="contained"
           onClick={() => handleAddToCart(productId)}
         >
           Add to cart

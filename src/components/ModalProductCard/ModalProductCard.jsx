@@ -6,7 +6,6 @@ import ModalSheet from './ModalParts/ModalSheet';
 const ModalProductCard = ({ openModal, setOpenModal }) => {
   const dispatch = useDispatch();
   return (
-    <React.Fragment>
       <Modal
         aria-labelledby='modal-title'
         aria-describedby='modal-desc'
@@ -16,7 +15,6 @@ const ModalProductCard = ({ openModal, setOpenModal }) => {
       >
         <ModalSheet />
       </Modal>
-    </React.Fragment>
   );
 };
 

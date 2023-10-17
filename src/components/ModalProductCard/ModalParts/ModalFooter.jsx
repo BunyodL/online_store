@@ -10,7 +10,6 @@ const ModalFooter = ({ rating, price }) => {
         <span>{rating.rate}</span>
         <Rating
           sx={{ fontSize: { lg: 25, md: 25, sm: 20, xs: 15 } }}
-          // size='medium'
           name='half-rating-read'
           value={rating.rate}
           readOnly

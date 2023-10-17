@@ -5,20 +5,18 @@ import Button from '@mui/material/Button';
 const LeftSideFooter = ({ rating, price, productId, handleProductId }) => {
   return (
     <div className={st.leftSide}>
-      <div className={st.count}>
-        <b>Count:</b> <span>{rating.count}</span>
-      </div>
-      <div className={st.price}>
+      <div>
         <b>Price:</b> <span>{price}$</span>
       </div>
-      <div className={st.infoButton}>
+      <div>
         <Button
           fullWidth
           sx={{
             paddingBlock: 0.2,
             paddingInline: 0.5,
-            fontSize: { lg: 12, md: 9, sm: 7.5, xs: 6 },
+            fontSize: { lg: 13, md: 12, sm: 10, xs: 8 },
             minWidth: '100%',
+            width: { lg: 105, md: 100, sm: 80, xs: 70 }
           }}
           size='small'
           onClick={() => handleProductId(productId)}

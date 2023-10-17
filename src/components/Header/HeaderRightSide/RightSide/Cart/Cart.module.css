@@ -1,0 +1,94 @@
+.menuListScroll {
+    overflow-y: scroll ;
+    max-height: 400px;
+}
+
+#menuItem {
+    display: block;
+    min-width: 300px;
+    padding: 0;
+    cursor: auto;
+    pointer-events: none;
+    background-size: cover;
+    background-color: #fff;
+}
+
+.button:focus .button:active #menuItem:hover {
+    background-color: blue;
+}
+
+.emptyCart {
+    margin-inline: 20px;
+    font-weight: bold;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.image {
+    width: 30%;
+    height: 70px;
+    margin-inline: 5px;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.price {
+    font-size: 20px;
+    background-color: #a3d951;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.productCount {
+    display: flex;
+    width: 35%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button {
+    border: 0;
+    background: none;
+    display: flex;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.button img {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+
+}
+

@@ -4,7 +4,7 @@ import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { ShoppingCartRounded } from '@mui/icons-material';
-import TrashIcon from '../RightSide/Cart/TrashIcon';
+import CartIcon from '../RightSide/Cart/CartIcon';
 import Notification from '../RightSide/Notification/Notification';
 import AccountIcon from '../RightSide/UserAccount/AccountIcon';
 
@@ -26,7 +26,7 @@ const MobileRightSideMenu = ({
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <TrashIcon MyTrashIcon={ShoppingCartRounded} title={'Cart'} />
+        <CartIcon MyTrashIcon={ShoppingCartRounded} title={'Cart'} />
       </MenuItem>
       <MenuItem>
         <Notification NotificationIcon={NotificationsIcon} title={'Notifications'} />
