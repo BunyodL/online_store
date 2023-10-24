@@ -15,7 +15,8 @@ const Sorting = ({ sort, handleSortChange }) => {
           value={sort}
           onChange={handleSortChange}
           autoWidth
-          label='Sorting by'>
+          label='Sorting by'
+        >
           <MenuItem value=''>
             <em>Default</em>
           </MenuItem>

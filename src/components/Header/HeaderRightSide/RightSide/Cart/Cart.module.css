@@ -1,56 +1,26 @@
 .menuListScroll {
-    overflow-y: scroll ;
+    overflow-y: scroll;
     max-height: 400px;
 }
 
-#menuItem {
-    display: block;
-    min-width: 300px;
-    padding: 0;
-    cursor: auto;
-    pointer-events: none;
-    background-size: cover;
-    background-color: #fff;
+.footer {
+    display: grid;
+    padding: 10px;
+    box-sizing: border-box;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 10px;
 }
 
-.button:focus .button:active #menuItem:hover {
-    background-color: blue;
-}
-
-.emptyCart {
-    margin-inline: 20px;
-    font-weight: bold;
-}
-
-.title {
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.content {
+.cartTotalPrice {
     display: flex;
-    width: 100%;
-    align-items: center;
-    padding: 8px 0;
+    justify-content: space-around;
 }
 
-.image {
-    width: 30%;
-    height: 70px;
-    margin-inline: 5px;
-}
-
-.image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.rightContent {
+.totalPriceTitle {
+    font-size: 20px;
+    font-weight: 650;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    min-width: 40%;
 }
 
 .price {
@@ -61,34 +31,7 @@
     border-radius: 10px;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    box-sizing: border-box;
+.emptyCart {
+    margin-inline: 20px;
+    font-weight: bold;
 }
-
-.productCount {
-    display: flex;
-    width: 35%;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.button {
-    border: 0;
-    background: none;
-    display: flex;
-    pointer-events: auto;
-    cursor: pointer;
-}
-
-.button img {
-    display: flex;
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
-
-}
-

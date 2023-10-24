@@ -3,11 +3,11 @@ import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useProductsSelector } from '../../../core/hooks/useMySelectors';
-import { setAlert, setOpenAlert } from '../../../redux-store/reducers/products-reducer';
+import { setOpenAlert } from '../../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={5} ref={ref} variant="filled" {...props} />;
+  return <MuiAlert elevation={5} ref={ref} variant='filled' {...props} />;
 });
 
 const AlertMessage = () => {

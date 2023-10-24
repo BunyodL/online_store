@@ -36,7 +36,7 @@ const productsReducer = createSlice({
     setProductsToCart(state, action) {
       const addedProduct = {
         ...state.products.reduce((acc, elem) =>
-          elem.id === action.payload.productId ? acc = elem : acc, null),
+          elem.id === action.payload.productId ? elem : acc, null),
         quantity: action.payload.quantity
       };
       state.productsInCart.push(addedProduct);
@@ -45,40 +45,37 @@ const productsReducer = createSlice({
       state.productsInCart = state.productsInCart.filter(elem => elem.id !== action.payload);
     },
     setProductQuantity(state, action) {
-      state.productsInCart.filter((elem => {
-        if (elem.id === action.payload.productId) {
-          if (action.payload.case === '+') {
-            return elem.quantity += 1;
-          } else {
-            return elem.quantity -= 1;
-          }
-        }
-      }));
+      state.productsInCart.filter(elem =>
+        elem.id === action.payload.productId && action.payload.case === '+'
+          ? elem.quantity += 1
+          : elem.quantity -= 1
+      );
     },
   },
   extraReducers: builder => {
-    builder.addCase(getProducts.pending, (state) => {
-      state.isFetching = true;
-    });
-    builder.addCase(getProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
-      state.isFetching = false;
-    });
-    builder.addCase(getProducts.rejected, (state, action) => {
-      state.errorMessage = action.error.message;
-      state.isFetching = false;
-    });
-    builder.addCase(getCurrentProduct.pending, (state) => {
-      state.isFetching = true;
-    });
-    builder.addCase(getCurrentProduct.fulfilled, (state, action) => {
-      state.currentProduct = action.payload;
-      state.isFetching = false;
-    });
-    builder.addCase(getCurrentProduct.rejected, (state, action) => {
-      state.errorMessage = action.error.message;
-      state.isFetching = false;
-    });
+    builder
+      .addCase(getProducts.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+        state.isFetching = false;
+      })
+      .addCase(getProducts.rejected, (state, action) => {
+        state.errorMessage = action.error.message;
+        state.isFetching = false;
+      })
+      .addCase(getCurrentProduct.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(getCurrentProduct.fulfilled, (state, action) => {
+        state.currentProduct = action.payload;
+        state.isFetching = false;
+      })
+      .addCase(getCurrentProduct.rejected, (state, action) => {
+        state.errorMessage = action.error.message;
+        state.isFetching = false;
+      });
   },
 });
 

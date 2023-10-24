@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const sequenceReducer = createSlice({
   name: 'sequence',
   initialState: {
+    categories: [],
     searchText: '',
     category: [],
     productsWithCategories: [],
@@ -10,6 +11,13 @@ const sequenceReducer = createSlice({
     searching: [],
   },
   reducers: {
+    setCategories(state, action) {
+      action.payload.filter((elem) => {
+        if (!state.categories.includes(elem.category)) {
+          state.categories.push(elem.category);
+        }
+      });
+    },
     setSearchText(state, action) {
       state.searchText = action.payload;
     },
@@ -29,6 +37,7 @@ const sequenceReducer = createSlice({
 });
 
 export const {
+  setCategories,
   setSearchText,
   setCategory,
   setProductsWithCategories,

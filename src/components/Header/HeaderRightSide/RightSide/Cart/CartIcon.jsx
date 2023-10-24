@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { useProductsSelector } from '../../../../../core/hooks/useMySelectors';
 
-const CartIcon = ({ MyTrashIcon, title, anchorRef, handleToggle, handleClose }) => {
+const CartIcon = ({ TrashIcon, title, anchorRef, handleToggle, handleClose }) => {
   const { productsInCart } = useProductsSelector();
 
   return (
@@ -16,7 +16,7 @@ const CartIcon = ({ MyTrashIcon, title, anchorRef, handleToggle, handleClose }) 
           color="inherit"
         >
           <Badge badgeContent={productsInCart.length} color="error">
-            <MyTrashIcon />
+            <TrashIcon />
           </Badge>
         </IconButton>
         {title}

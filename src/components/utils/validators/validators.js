@@ -5,5 +5,8 @@ export const requiredField = value => {
     // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value.email)) {
     //   errors.email = 'Invalid email address';
   }
+  if (!value.password) {
+    errors.password = 'Required field';
+  }
   return errors;
 };

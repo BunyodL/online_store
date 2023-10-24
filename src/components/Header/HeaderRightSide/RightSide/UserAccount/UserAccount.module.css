@@ -1,0 +1,27 @@
+.drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.accountIcon {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    min-height: 64px;
+}
+
+.accountButton {
+    padding: 8px;
+    border: 0;
+    outline: 0;
+    background: none;
+}
+
+
+
+
+
+
+

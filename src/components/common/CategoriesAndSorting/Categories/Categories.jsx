@@ -17,21 +17,18 @@ const MenuProps = {
     },
   },
 };
-
-const categories = ["Men's clothing", "Women's clothing", 'Jewelery', 'Electronics'];
-
-const Categories = ({ category, handleCategoryChange }) => {
+const Categories = ({ category, handleCategoryChange, categories }) => {
   return (
     <div>
       <FormControl sx={{ width: 200, marginRight: 1 }}>
-        <InputLabel id='demo-multiple-checkbox-label'>Categories</InputLabel>
+        <InputLabel id="demo-multiple-checkbox-label">Categories</InputLabel>
         <Select
-          labelId='demo-multiple-checkbox-label'
-          id='demo-multiple-checkbox'
+          labelId="demo-multiple-checkbox-label"
+          id="demo-multiple-checkbox"
           multiple
           value={category}
           onChange={handleCategoryChange}
-          input={<OutlinedInput label='Categories' />}
+          input={<OutlinedInput label="Categories" />}
           renderValue={selected => selected.join(', ')}
           MenuProps={MenuProps}>
           {categories.map(name => (

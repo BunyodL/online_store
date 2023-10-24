@@ -1,8 +1,9 @@
 import React from 'react';
-import CartList from './CartList/CartList';
 import CartIcon from './CartIcon';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import CartListContainer from './CartList/CartLIstContainer';
 
-const Cart = ({ MyTrashIcon, title }) => {
+const Cart = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -27,9 +28,9 @@ const Cart = ({ MyTrashIcon, title }) => {
 
   return (
     <>
-      <CartIcon MyTrashIcon={MyTrashIcon} title={title} anchorRef={anchorRef}
+      <CartIcon TrashIcon={ShoppingCartOutlinedIcon} anchorRef={anchorRef}
                 handleToggle={handleToggle} handleClose={handleClose} />
-      <CartList open={open} handleClose={handleClose} anchorRef={anchorRef} />
+      <CartListContainer open={open} handleClose={handleClose} anchorRef={anchorRef} />
     </>
   );
 };

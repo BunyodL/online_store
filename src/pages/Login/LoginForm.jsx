@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { requiredField } from '../utils/validators/validators';
+import { requiredField } from '../../components/utils/validators/validators';
 import MyForm from './MyForm';
 import { useDispatch } from 'react-redux';
 

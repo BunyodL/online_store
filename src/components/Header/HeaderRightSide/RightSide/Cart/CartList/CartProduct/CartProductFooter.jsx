@@ -1,15 +1,15 @@
 import React from 'react';
-import st from '../../Cart.module.css';
+import st from './CartProduct.module.css';
 import plusIcon from '../../../../../../../images/icons8_plus_96.png';
 import minusIcon from '../../../../../../../images/icons8_minus_96.png';
 import trashIcon from '../../../../../../../images/icons8_trash_96.png';
 import { setProductQuantity } from '../../../../../../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
 
-const  CartProductFooter = ({ quantity, handleRemoveFromCart, productId }) => {
+const CartProductFooter = ({ quantity, handleRemoveFromCart, productId }) => {
   const dispatch = useDispatch();
   const handleButtonClick = (e) => {
-    dispatch(setProductQuantity({productId, case: e.target.value}));
+    dispatch(setProductQuantity({ productId, case: e.target.value }));
   };
 
   return (

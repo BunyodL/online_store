@@ -1,20 +1,18 @@
 import React from 'react';
 import Modal from '@mui/joy/Modal';
-import { useDispatch } from 'react-redux';
 import ModalSheet from './ModalParts/ModalSheet';
 
-const ModalProductCard = ({ openModal, setOpenModal }) => {
-  const dispatch = useDispatch();
+const ModalProductCard = ({ openModal, handleCloseModal }) => {
   return (
-      <Modal
-        aria-labelledby='modal-title'
-        aria-describedby='modal-desc'
-        open={openModal}
-        onClose={() => dispatch(setOpenModal(false))}
-        sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
-        <ModalSheet />
-      </Modal>
+    <Modal
+      aria-labelledby='modal-title'
+      aria-describedby='modal-desc'
+      open={openModal}
+      onClose={handleCloseModal}
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+    >
+      <ModalSheet />
+    </Modal>
   );
 };
 

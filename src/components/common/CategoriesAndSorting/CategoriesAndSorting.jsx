@@ -3,21 +3,17 @@ import Categories from './Categories/Categories';
 import Sorting from './Sorting/Sorting';
 import { useDispatch } from 'react-redux';
 import { useSequenceSelector } from '../../../core/hooks/useMySelectors';
-import st from '../../ProductPage/ProductPage.module.css';
+import st from '../../../pages/ProductPage/ProductPage.module.css';
 
 const CategoriesAndSorting = ({ setCategory, setSort }) => {
-  const { category, sort } = useSequenceSelector();
+  const { category, sort, categories } = useSequenceSelector();
   const dispatch = useDispatch();
 
   const handleCategoryChange = event => {
     const {
       target: { value },
     } = event;
-    dispatch(
-      setCategory(
-        typeof value === 'string' ? value.split(',') : value
-      )
-    );
+    dispatch(setCategory(typeof value === 'string' ? value.split(',') : value));
   };
 
   const handleSortChange = event => {
@@ -26,7 +22,7 @@ const CategoriesAndSorting = ({ setCategory, setSort }) => {
 
   return (
     <div className={st.sorting}>
-      <Categories category={category} handleCategoryChange={handleCategoryChange} />
+      <Categories categories={categories} category={category} handleCategoryChange={handleCategoryChange} />
       <Sorting sort={sort} handleSortChange={handleSortChange} />
     </div>
   );

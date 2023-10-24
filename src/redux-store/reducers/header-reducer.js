@@ -3,20 +3,31 @@ import { createSlice } from '@reduxjs/toolkit';
 const headerReducer = createSlice({
   name: 'header',
   initialState: {
-    anchorEl: null,
+    accountMenuEl: null,
     mobileMoreAnchorEl: null,
-    menuId: 'primary-search-account-menu',
-    mobileMenuId: 'primary-search-account-menu-mobile',
+    menuDrawer: false,
+    accountDrawer: false,
   },
   reducers: {
-    setAnchorEl(state, action) {
-      state.anchorEl = action.payload;
+    setAccountMenuEl(state, action) {
+      state.accountMenuEl = action.payload;
     },
     setMobileMoreAnchorEl(state, action) {
       state.mobileMoreAnchorEl = action.payload;
     },
+    setMenuDrawer(state, action) {
+      state.menuDrawer = action.payload;
+    },
+    setAccountDrawer(state, action) {
+      state.accountDrawer = action.payload;
+    }
   },
 });
 
-export const { setAnchorEl, setMobileMoreAnchorEl } = headerReducer.actions;
+export const {
+  setAccountMenuEl,
+  setMobileMoreAnchorEl,
+  setAccountDrawer,
+  setMenuDrawer,
+} = headerReducer.actions;
 export default headerReducer.reducer;

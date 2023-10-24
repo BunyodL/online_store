@@ -15,7 +15,7 @@ const ModalSheet = () => {
 
   return (
     <Sheet
-      variant="outlined"
+      variant='outlined'
       sx={{
         maxWidth: { lg: 700, md: 460, sm: 400, xs: 250 },
         maxHeight: { lg: 600, md: 550, sm: 450, xs: 400 },
@@ -25,7 +25,7 @@ const ModalSheet = () => {
       }}
     >
       {isFetching ? (
-        <CircularProgress color="inherit" />
+        <CircularProgress color='inherit' />
       ) : (
         <>
           <ModalCloseButton />

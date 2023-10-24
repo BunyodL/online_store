@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import Preloader from '../common/Preloader/Preloader';
+import Preloader from '../../components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 import st from './Login.module.css';
 import { login } from '../../redux-store/reducers/auth-reducer';

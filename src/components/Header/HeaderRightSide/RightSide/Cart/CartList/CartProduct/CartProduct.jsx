@@ -3,19 +3,19 @@ import MenuItem from '@mui/material/MenuItem';
 import { Divider } from '@mui/material';
 import CartProductContent from './CartProductContent';
 import CartProductFooter from './CartProductFooter';
-import st from '../../Cart.module.css';
+import st from './CartProduct.module.css';
 
-const CartProduct = ({ title, price, image, productId, handleRemoveFromCart, quantity }) => {
+const CartProduct = ({ title, price, image, productId, handleRemoveFromCart, quantity, numberRounding }) => {
   let productPrice = price * quantity;
 
   return (
     <>
       <MenuItem id={st.menuItem}>
-        <CartProductContent title={title} productPrice={productPrice} image={image} />
-        <Divider style={{ marginBlock: 5 }} />
+        <CartProductContent title={title} productPrice={productPrice} image={image} numberRounding={numberRounding} />
+        <Divider />
         <CartProductFooter handleRemoveFromCart={handleRemoveFromCart} productId={productId} quantity={quantity} />
       </MenuItem>
-      <Divider style={{ marginBlock: 5 }} />
+      <Divider style={{ margin: 0 }} />
     </>
   );
 };

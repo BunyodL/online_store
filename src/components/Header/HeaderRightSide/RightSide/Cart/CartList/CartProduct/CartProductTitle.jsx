@@ -1,5 +1,5 @@
 import React from 'react';
-import st from '../../Cart.module.css';
+import st from './CartProduct.module.css';
 
 const CartProductTitle = ({ title }) => {
   const titleLength = 21;

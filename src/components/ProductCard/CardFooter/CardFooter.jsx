@@ -3,7 +3,7 @@ import CardActions from '@mui/material/CardActions';
 import LeftSideFooter from './LeftSideFooter';
 import RightSideFooter from './RightSideFooter';
 
-const CardFooter = ({ productId, rating, price, handleProductId, handleAddToCart }) => {
+const CardFooter = ({ productId, rating, price, handleOpenModal, handleAddToCart }) => {
   return (
     <CardActions
       sx={{
@@ -15,7 +15,7 @@ const CardFooter = ({ productId, rating, price, handleProductId, handleAddToCart
         fontSize: { lg: 18, md: 17, sm: 15, xs: 10 },
       }}
     >
-      <LeftSideFooter rating={rating} price={price} productId={productId} handleProductId={handleProductId} />
+      <LeftSideFooter price={price} productId={productId} handleOpenModal={handleOpenModal} />
       <RightSideFooter rating={rating} productId={productId} handleAddToCart={handleAddToCart} />
     </CardActions>
   );

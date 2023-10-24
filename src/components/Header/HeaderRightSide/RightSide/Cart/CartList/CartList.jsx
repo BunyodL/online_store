@@ -2,9 +2,18 @@ import React from 'react';
 import Popper from '@mui/material/Popper';
 import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
-import CartMenuList from './CartMenuList';
+import CartListMenu from './CartListMenu';
+import CartListFooter from './CartListFooter';
 
-const CartList = ({ open, handleClose, anchorRef }) => {
+const CartList = ({
+                    open,
+                    handleClose,
+                    anchorRef,
+                    productsInCart,
+                    handleRemoveFromCart,
+                    numberRounding
+                  }) => {
+
   return (
     <Popper
       open={open}
@@ -24,7 +33,13 @@ const CartList = ({ open, handleClose, anchorRef }) => {
         >
           <Paper>
             {/*this is the list of our products in the cart */}
-            <CartMenuList handleClose={handleClose} open={open} />
+            <CartListMenu
+              handleRemoveFromCart={handleRemoveFromCart}
+              handleClose={handleClose} open={open}
+              productsInCart={productsInCart}
+              numberRounding={numberRounding}
+            />
+            {productsInCart.length ? <CartListFooter productsInCart={productsInCart} /> : null}
           </Paper>
         </Grow>
       )}

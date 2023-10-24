@@ -2,7 +2,7 @@ import React from 'react';
 import st from '../ProductCard.module.css';
 import Button from '@mui/material/Button';
 
-const LeftSideFooter = ({ rating, price, productId, handleProductId }) => {
+const LeftSideFooter = ({ price, productId, handleOpenModal }) => {
   return (
     <div className={st.leftSide}>
       <div>
@@ -16,10 +16,10 @@ const LeftSideFooter = ({ rating, price, productId, handleProductId }) => {
             paddingInline: 0.5,
             fontSize: { lg: 13, md: 12, sm: 10, xs: 8 },
             minWidth: '100%',
-            width: { lg: 105, md: 100, sm: 80, xs: 70 }
+            width: { lg: 105, md: 100, sm: 80, xs: 70 },
           }}
           size='small'
-          onClick={() => handleProductId(productId)}
+          onClick={() => handleOpenModal(productId)}
         >
           Learn More
         </Button>

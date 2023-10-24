@@ -4,9 +4,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import st from './ProductCard.module.css';
 
-const CardBasis = ({ productId, title, image, handleProductId }) => {
+const CardBasis = ({ productId, title, image, handleOpenModal }) => {
   return (
-    <div className={st.cardBasis} onClick={() => handleProductId(productId)}>
+    <div className={st.cardBasis} onClick={() => handleOpenModal(productId)}>
       <CardMedia
         sx={{
           width: '100%',

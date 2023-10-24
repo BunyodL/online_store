@@ -1,16 +1,15 @@
 import React from 'react';
 import IconButton from '@mui/material/IconButton';
 
-const AccountIcon = ({ AccIcon, title, handleProfileMenuOpen }) => {
+const AccountIcon = ({ AccIcon, title, anchorRef, handleToggle, handleClose }) => {
   return (
     <>
       <IconButton
-        size='large'
-        aria-label='account of current user'
-        aria-controls='primary-search-account-menu'
-        aria-haspopup='true'
-        color='inherit'
-        onClick={handleProfileMenuOpen}
+        ref={anchorRef}
+        onClick={handleToggle}
+        onClose={handleClose}
+        size="large"
+        color="inherit"
       >
         <AccIcon />
       </IconButton>

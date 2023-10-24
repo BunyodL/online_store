@@ -15,12 +15,12 @@ const ModalCenterContent = ({ title, image, description }) => {
             objectFit: 'contain',
             paddingBlock: 1,
           }}
-          component="img"
+          component='img'
           alt={title}
           image={image}
         />
       </div>
-      <Typography sx={{ fontSize: { lg: 16, md: 14, sm: 12, xs: 10 } }} id="modal-desc">
+      <Typography sx={{ fontSize: { lg: 16, md: 14, sm: 12, xs: 10 } }} id='modal-desc'>
         {description}
       </Typography>
     </>
