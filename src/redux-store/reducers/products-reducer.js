@@ -46,9 +46,9 @@ const productsReducer = createSlice({
     },
     setProductQuantity(state, action) {
       state.productsInCart.filter(elem =>
-        elem.id === action.payload.productId && action.payload.case === '+'
-          ? elem.quantity += 1
-          : elem.quantity -= 1
+        elem.id === action.payload.productId
+          ? (action.payload.case === '+' ? elem.quantity += 1 : elem.quantity -= 1)
+          : null
       );
     },
   },
