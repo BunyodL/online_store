@@ -1,9 +1,31 @@
 import React from 'react';
 import CardActions from '@mui/material/CardActions';
-import LeftSideFooter from './LeftSideFooter';
-import RightSideFooter from './RightSideFooter';
+import LeftSideCardFooter from './LeftSideCardFooter/LeftSideCardFooter';
+import RightSideCardFooter from './RightSideCardFooter/RightSideCardFooter';
+import { setAlert, setOpenAlert, setProductsToCart } from '../../../redux-store/reducers/products-reducer';
+import { useDispatch } from 'react-redux';
+import { useProductsSelector } from '../../../core/hooks/useMySelectors';
 
-const CardFooter = ({ productId, rating, price, handleOpenModal, handleAddToCart }) => {
+const CardFooter = ({ productId, rating, price, handleOpenModal }) => {
+  const dispatch = useDispatch();
+  const { productsInCart } = useProductsSelector();
+
+  // alert message
+  const handleAlertMessage = (type, message) => {
+    dispatch(setAlert({ type, message }));
+  };
+
+  // adding product to the cart and showing alert
+  const handleAddToCart = (productId) => {
+    if (!productsInCart.some((elem) => elem.id === productId)) {
+      dispatch(setProductsToCart({ productId, quantity: 1 }));
+      handleAlertMessage('success', 'Product added to cart!');
+    } else {
+      handleAlertMessage('warning', 'This product is already in the cart!');
+    }
+    dispatch(setOpenAlert(true));
+  };
+
   return (
     <CardActions
       sx={{
@@ -15,8 +37,8 @@ const CardFooter = ({ productId, rating, price, handleOpenModal, handleAddToCart
         fontSize: { lg: 18, md: 17, sm: 15, xs: 10 },
       }}
     >
-      <LeftSideFooter price={price} productId={productId} handleOpenModal={handleOpenModal} />
-      <RightSideFooter rating={rating} productId={productId} handleAddToCart={handleAddToCart} />
+      <LeftSideCardFooter price={price} productId={productId} handleOpenModal={handleOpenModal} />
+      <RightSideCardFooter rating={rating} productId={productId} handleAddToCart={handleAddToCart} />
     </CardActions>
   );
 };

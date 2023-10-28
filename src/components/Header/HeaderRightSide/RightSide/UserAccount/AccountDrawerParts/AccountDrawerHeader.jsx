@@ -3,7 +3,7 @@ import st from '../UserAccount.module.css';
 import DrawerCloseButton from '../../../../../common/Drawer/DrawerCloseButton';
 import { AccountCircle } from '@mui/icons-material';
 
-const AccountDrawerHeader = ({ setAccountDrawer }) => {
+const AccountDrawerHeader = React.memo(({ setAccountDrawer }) => {
   return (
     <div className={st.drawerHeader}>
       <div className={st.accountIcon}>
@@ -14,6 +14,6 @@ const AccountDrawerHeader = ({ setAccountDrawer }) => {
       <DrawerCloseButton setDrawer={setAccountDrawer} />
     </div>
   );
-};
+});
 
 export default AccountDrawerHeader;

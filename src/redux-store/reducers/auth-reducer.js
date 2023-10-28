@@ -1,9 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authAPI } from '../../api/api';
-
-export const login = createAsyncThunk('auth/login', async (loginData) => {
-  return await authAPI.login(loginData.email, loginData.password);
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const authReducer = createSlice({
   name: 'auth',
@@ -12,27 +7,22 @@ const authReducer = createSlice({
     username: null,
     password: null,
     errorMessage: null,
-    isFetching: false,
     token: null,
   },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(login.pending, (state) => {
-        state.isFetching = true;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.username = action.meta.arg.username;
-        state.password = action.meta.arg.password;
-        state.isFetching = false;
-        state.isAuth = true;
-        state.token = action.payload.data.token;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.errorMessage = action.error.message;
-        state.isFetching = false;
-      });
+  reducers: {
+    setPersonData(state, action) {
+      state.username = action.payload.email;
+      state.password = action.payload.password;
+      state.isAuth = true;
+    },
+    setError(state, action) {
+      state.errorMessage = action.payload;
+    },
+    setToken(state, action) {
+      state.token = action.payload;
+    }
   },
 });
 
+export const { setPersonData, setError, setToken } = authReducer.actions;
 export default authReducer.reducer;

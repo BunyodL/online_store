@@ -8,7 +8,7 @@ import AccountDrawerHeader from './AccountDrawerParts/AccountDrawerHeader';
 import AccountDrawerBody from './AccountDrawerParts/AccountDrawerBody';
 import AccountDrawerFooter from './AccountDrawerParts/AccountDrawerFooter';
 
-const UserAccount = () => {
+const UserAccount = React.memo(() => {
   const { accountDrawer } = useHeaderSelector();
 
   return (
@@ -20,6 +20,6 @@ const UserAccount = () => {
       <AccountDrawerFooter />
     </MyDrawer>
   );
-};
+});
 
 export default UserAccount;

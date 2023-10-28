@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useHeaderSelector } from '../../core/hooks/useMySelectors';
 import { setAccountMenuEl, setMobileMoreAnchorEl } from '../../redux-store/reducers/header-reducer';
 
-const Header = () => {
+const Header = React.memo(() => {
   const dispatch = useDispatch();
   const { mobileMoreAnchorEl } = useHeaderSelector();
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -26,6 +26,6 @@ const Header = () => {
       />
     </Box>
   );
-};
+});
 
 export default Header;

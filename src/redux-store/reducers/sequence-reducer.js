@@ -3,32 +3,32 @@ import { createSlice } from '@reduxjs/toolkit';
 const sequenceReducer = createSlice({
   name: 'sequence',
   initialState: {
-    categories: [],
-    searchText: '',
-    category: [],
-    productsWithCategories: [],
-    sort: '',
+    allCategories: [],
+    selectedCategories: [],
+    productsBasedOnCategories: [],
+    selectedSort: '',
     searching: [],
+    searchText: '',
   },
   reducers: {
-    setCategories(state, action) {
-      action.payload.filter((elem) => {
-        if (!state.categories.includes(elem.category)) {
-          state.categories.push(elem.category);
+    setAllCategories(state, action) {
+      action.payload.forEach((elem) => {
+        if (!state.allCategories.includes(elem.category)) {
+          state.allCategories.push(elem.category);
         }
       });
     },
     setSearchText(state, action) {
       state.searchText = action.payload;
     },
-    setCategory(state, action) {
-      state.category = action.payload;
+    setSelectedCategories(state, action) {
+      state.selectedCategories = action.payload;
     },
-    setProductsWithCategories(state, action) {
-      state.productsWithCategories = action.payload;
+    setProductsBasedOnCategories(state, action) {
+      state.productsBasedOnCategories = action.payload;
     },
-    setSort(state, action) {
-      state.sort = action.payload;
+    setSelectedSort(state, action) {
+      state.selectedSort = action.payload;
     },
     setSearching(state, action) {
       state.searching = action.payload;
@@ -37,11 +37,11 @@ const sequenceReducer = createSlice({
 });
 
 export const {
-  setCategories,
+  setAllCategories,
   setSearchText,
-  setCategory,
-  setProductsWithCategories,
-  setSort,
+  setSelectedCategories,
+  setProductsBasedOnCategories,
+  setSelectedSort,
   setSearching
 } = sequenceReducer.actions;
 

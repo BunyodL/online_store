@@ -13,7 +13,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const DrawerCloseButton = ({setDrawer}) => {
+const DrawerCloseButton = React.memo(({setDrawer}) => {
   const dispatch = useDispatch();
 
   return (
@@ -23,6 +23,6 @@ const DrawerCloseButton = ({setDrawer}) => {
       </IconButton>
     </DrawerHeader>
   );
-};
+});
 
 export default DrawerCloseButton;

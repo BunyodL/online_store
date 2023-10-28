@@ -17,7 +17,7 @@ const MenuProps = {
     },
   },
 };
-const Categories = ({ category, handleCategoryChange, categories }) => {
+const Categories = React.memo(({ selectedCategories, handleCategoryChange, allCategories }) => {
   return (
     <div>
       <FormControl sx={{ width: 200, marginRight: 1 }}>
@@ -26,14 +26,14 @@ const Categories = ({ category, handleCategoryChange, categories }) => {
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={category}
+          value={selectedCategories}
           onChange={handleCategoryChange}
           input={<OutlinedInput label="Categories" />}
           renderValue={selected => selected.join(', ')}
           MenuProps={MenuProps}>
-          {categories.map(name => (
+          {allCategories.map(name => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={category.indexOf(name) > -1} />
+              <Checkbox checked={selectedCategories.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
@@ -41,6 +41,6 @@ const Categories = ({ category, handleCategoryChange, categories }) => {
       </FormControl>
     </div>
   );
-};
+});
 
 export default Categories;

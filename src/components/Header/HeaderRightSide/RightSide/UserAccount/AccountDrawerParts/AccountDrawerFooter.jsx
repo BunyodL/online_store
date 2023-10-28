@@ -2,7 +2,7 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui
 import React from 'react';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-const AccountDrawerFooter = () => {
+const AccountDrawerFooter = React.memo(() => {
 
   return (
     <>
@@ -18,6 +18,6 @@ const AccountDrawerFooter = () => {
       </List>
     </>
   );
-};
+});
 
 export default AccountDrawerFooter;

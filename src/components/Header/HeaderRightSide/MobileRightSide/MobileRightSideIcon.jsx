@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import SignInButton from '../RightSide/Sign/SignInButton';
 
-const MobileRightSideIcon = ({ handleMobileMenuOpen, isAuth }) => {
+const MobileRightSideIcon = React.memo(({ handleMobileMenuOpen, isAuth }) => {
   return (
     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
       {!isAuth && <SignInButton />}
@@ -19,6 +19,6 @@ const MobileRightSideIcon = ({ handleMobileMenuOpen, isAuth }) => {
       </IconButton>
     </Box>
   );
-};
+});
 
 export default MobileRightSideIcon;

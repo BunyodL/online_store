@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButton from '@mui/material/IconButton';
 
-const DrawerIcon = ({ MyDrawerIcon, handleDrawerOpen }) => {
+const DrawerIcon = React.memo(({ MyDrawerIcon, handleDrawerOpen }) => {
   return (
     <IconButton
       color="inherit"
@@ -13,6 +13,6 @@ const DrawerIcon = ({ MyDrawerIcon, handleDrawerOpen }) => {
       <MyDrawerIcon />
     </IconButton>
   );
-};
+});
 
 export default DrawerIcon;

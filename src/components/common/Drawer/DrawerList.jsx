@@ -3,7 +3,7 @@ import Drawer from '@mui/material/Drawer';
 
 const drawerWidth = 240;
 
-const DrawerList = ({ drawerSide, open, children }) => {
+const DrawerList = React.memo(({ drawerSide, open, children }) => {
   return (
     <Drawer
       sx={{
@@ -20,6 +20,6 @@ const DrawerList = ({ drawerSide, open, children }) => {
       {children}
     </Drawer>
   );
-};
+});
 
 export default DrawerList;

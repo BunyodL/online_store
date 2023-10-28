@@ -8,7 +8,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
-const DrawerItems = () => {
+const DrawerItems = React.memo(() => {
   return (
     <>
       <List>
@@ -38,6 +38,6 @@ const DrawerItems = () => {
       </List>
     </>
   );
-};
+});
 
 export default DrawerItems;

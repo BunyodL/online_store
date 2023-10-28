@@ -2,7 +2,7 @@ import React from 'react';
 import { TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 
-const MyTextField = ({ searchText, setSearchText }) => {
+const MyTextField = React.memo(({ searchText, setSearchText }) => {
   const dispatch = useDispatch();
 
   const handleTextChange = event => {
@@ -20,6 +20,6 @@ const MyTextField = ({ searchText, setSearchText }) => {
       value={searchText}
     />
   );
-};
+});
 
 export default MyTextField;

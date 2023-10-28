@@ -4,30 +4,29 @@ import ProductList from '../../components/ProductList/ProductList';
 import { useProductsSelector, useSequenceSelector } from '../../core/hooks/useMySelectors';
 import CategoriesAndSorting from '../../components/common/CategoriesAndSorting/CategoriesAndSorting';
 import MyTextField from '../../components/common/MyTextField/MyTextField';
-import { setCategory, setSearchText, setSearching, setSort } from '../../redux-store/reducers/sequence-reducer';
+import { setSearchText, setAllCategories, setProductsBasedOnCategories } from '../../redux-store/reducers/sequence-reducer';
 import { useDispatch } from 'react-redux';
-import { productsOrder } from '../../components/common/CategoriesAndSorting/Sorting/productsOrder';
+import { filterCategories } from '../../components/common/CategoriesAndSorting/Categories/filterCategories';
 
-const ProductPage = ({ handleOpenModal, handleAddToCart, products }) => {
-  const { errorMessage } = useProductsSelector();
-  const { searchText, searching, sort } = useSequenceSelector();
+const ProductPage = ({ products }) => {
   const dispatch = useDispatch();
+  const { errorMessage } = useProductsSelector();
+  const { searchText, selectedCategories, productsBasedOnCategories } = useSequenceSelector();
 
-  // sorting products
-  // must be changed!!!
+  // setting products categories to array
   React.useEffect(() => {
-    // ЛИШНИЕ РЕРЕНДЕРЫ!!!
-    console.log('SEARCHING RENDERS');
-    const searchedProducts = products.filter(elem => elem.title.toLowerCase().includes(searchText.trim()));
-    dispatch(setSearching(searchedProducts));
-  }, [products, searchText, dispatch]);
+    console.log('SET CATEGORIES');
+    if (products) {
+      dispatch(setAllCategories(products));
+    }
+  }, [products, dispatch]);
 
-  const [sortedProducts, setSortedProducts] = React.useState([]);
-
+  // filtering products by category
   React.useEffect(() => {
-    setSortedProducts(productsOrder(searching, sort));
-    // must be [products, sort]
-  }, [searching, sort]);
+    console.log('Filter Categories');
+    const productsCategories = filterCategories(products, selectedCategories);
+    dispatch(setProductsBasedOnCategories(productsCategories));
+  }, [products, selectedCategories, dispatch]);
 
   return (
     <>
@@ -37,17 +36,13 @@ const ProductPage = ({ handleOpenModal, handleAddToCart, products }) => {
         <>
           <Container>
             <MyTextField searchText={searchText} setSearchText={setSearchText} />
-            <CategoriesAndSorting setCategory={setCategory} setSort={setSort} />
-            <ProductList
-              products={sortedProducts}
-              searching={searching}
-              handleAddToCart={handleAddToCart}
-              handleOpenModal={handleOpenModal}
-            />
+            <CategoriesAndSorting />
+            <ProductList products={productsBasedOnCategories} />
           </Container>
         </>
       )}
     </>
   );
 };
+
 export default ProductPage;

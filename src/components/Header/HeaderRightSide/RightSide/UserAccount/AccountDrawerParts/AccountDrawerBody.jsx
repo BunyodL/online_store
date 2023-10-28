@@ -4,7 +4,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import ShoppingBagTwoToneIcon from '@mui/icons-material/ShoppingBagTwoTone';
 
-const AccountDrawerBody = () => {
+const AccountDrawerBody = React.memo(() => {
   return (
     <>
       <List>
@@ -38,6 +38,6 @@ const AccountDrawerBody = () => {
       </List>
     </>
   );
-};
+});
 
 export default AccountDrawerBody;

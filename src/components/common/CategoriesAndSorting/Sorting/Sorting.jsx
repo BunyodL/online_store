@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-const Sorting = ({ sort, handleSortChange }) => {
+const Sorting = React.memo(({ selectedSort, handleSortChange }) => {
   return (
     <div>
       <FormControl sx={{ minWidth: 90, marginRight: 1 }}>
@@ -12,7 +12,7 @@ const Sorting = ({ sort, handleSortChange }) => {
         <Select
           labelId='demo-simple-select-autowidth-label'
           id='demo-simple-select-autowidth'
-          value={sort}
+          value={selectedSort}
           onChange={handleSortChange}
           autoWidth
           label='Sorting by'
@@ -28,6 +28,6 @@ const Sorting = ({ sort, handleSortChange }) => {
       </FormControl>
     </div>
   );
-};
+});
 
 export default Sorting;

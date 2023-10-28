@@ -1,17 +1,24 @@
 import React from 'react';
 import Sheet from '@mui/joy/Sheet';
-import { useProductsSelector } from '../../../core/hooks/useMySelectors';
+import { useModalSelector } from '../../../core/hooks/useMySelectors';
 import { CircularProgress, Divider } from '@mui/material';
 import ModalCenterContent from './ModalCenterContent';
 import ModalFooter from './ModalFooter';
 import ModalProductTitle from './ModalProductTitle';
 import ModalCloseButton from './ModalCloseButton';
+import { useGetCurrentProductQuery } from '../../../api/apiSlice';
+import ModalError from './ModalError';
 
 const ModalSheet = () => {
+  const { currentProductId } = useModalSelector();
   const {
+    data = {},
     isFetching,
-    currentProduct: { title, image, description, rating, price, category },
-  } = useProductsSelector();
+    isError,
+    isSuccess,
+    error,
+  } = useGetCurrentProductQuery(currentProductId);
+  const { title, image, description, category, rating, price } = data;
 
   return (
     <Sheet
@@ -24,13 +31,18 @@ const ModalSheet = () => {
         boxShadow: 'lg',
       }}
     >
-      {isFetching ? (
-        <CircularProgress color='inherit' />
-      ) : (
+      {isFetching && <CircularProgress color='inherit' />}
+      {isError && <ModalError error={error} />}
+      {isSuccess && (
         <>
           <ModalCloseButton />
           <ModalProductTitle title={title} />
-          <ModalCenterContent title={title} image={image} description={description} category={category} />
+          <ModalCenterContent
+            title={title}
+            image={image}
+            description={description}
+            category={category}
+          />
           <Divider sx={{ marginTop: 2 }} />
           <ModalFooter rating={rating} price={price} />
         </>

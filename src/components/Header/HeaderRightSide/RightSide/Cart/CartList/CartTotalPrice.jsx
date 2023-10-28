@@ -1,6 +1,5 @@
 import React from 'react';
 import st from '../Cart.module.css';
-import { Divider } from '@mui/material';
 
 const CartTotalPrice = ({ productsInCart }) => {
   const totalPrice =

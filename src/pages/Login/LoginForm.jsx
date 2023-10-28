@@ -2,14 +2,9 @@ import React from 'react';
 import { Formik } from 'formik';
 import { requiredField } from '../../components/utils/validators/validators';
 import MyForm from './MyForm';
-import { useDispatch } from 'react-redux';
 
-const LoginForm = ({ login }) => {
-  const dispatch = useDispatch();
-
-  const onLoginDataSubmit = loginData => {
-    dispatch(login(loginData));
-  };
+const LoginForm = ({ logInToStore }) => {
+  const onLoginDataSubmit = loginData => logInToStore(loginData);
 
   return (
     <Formik

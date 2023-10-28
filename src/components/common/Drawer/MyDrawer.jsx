@@ -5,7 +5,7 @@ import DrawerList from './DrawerList';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 import { useDispatch } from 'react-redux';
 
-const MyDrawer = ({ setDrawer, open, drawerSide, MyDrawerIcon, children }) => {
+const MyDrawer = React.memo(({ setDrawer, open, drawerSide, MyDrawerIcon, children }) => {
   const dispatch = useDispatch();
 
   const handleDrawerOpen = () => dispatch(setDrawer(true));
@@ -22,6 +22,6 @@ const MyDrawer = ({ setDrawer, open, drawerSide, MyDrawerIcon, children }) => {
       </ClickAwayListener>
     </>
   );
-};
+});
 
 export default MyDrawer;

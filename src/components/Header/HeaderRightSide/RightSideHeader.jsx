@@ -6,7 +6,7 @@ import SignInButton from './RightSide/Sign/SignInButton';
 import Cart from './RightSide/Cart/Cart';
 import UserAccount from './RightSide/UserAccount/UserAccount';
 
-const RightSideHeader = ({ isAuth }) => {
+const RightSideHeader = React.memo(({ isAuth }) => {
   return (
     <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'space-between', alignItems: 'center' }}>
       {!isAuth && <SignInButton />}
@@ -15,6 +15,6 @@ const RightSideHeader = ({ isAuth }) => {
       <UserAccount />
     </Box>
   );
-};
+});
 
 export default RightSideHeader;

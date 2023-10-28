@@ -1,31 +1,17 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { productsAPI } from '../../api/api';
-
-export const getProducts = createAsyncThunk('products/getProductsStatus', async () => {
-  const response = await productsAPI.getAllProducts();
-  return response.data;
-});
-
-export const getCurrentProduct = createAsyncThunk('products/getCurrentProductStatus', async productId => {
-  const response = await productsAPI.getCurrentProduct(productId);
-  return response.data;
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const productsReducer = createSlice({
   name: 'products',
   initialState: {
     products: [],
     productsInCart: [],
-    currentProduct: {},
-    isFetching: false,
-    errorMessage: null,
-    openModal: false,
+    errorMessage: '',
     openAlert: false,
     alert: {},
   },
   reducers: {
-    setOpenModal(state, action) {
-      state.openModal = action.payload;
+    setProducts(state, action) {
+      state.products = action.payload;
     },
     setOpenAlert(state, action) {
       state.openAlert = action.payload;
@@ -52,39 +38,14 @@ const productsReducer = createSlice({
       );
     },
   },
-  extraReducers: builder => {
-    builder
-      .addCase(getProducts.pending, (state) => {
-        state.isFetching = true;
-      })
-      .addCase(getProducts.fulfilled, (state, action) => {
-        state.products = action.payload;
-        state.isFetching = false;
-      })
-      .addCase(getProducts.rejected, (state, action) => {
-        state.errorMessage = action.error.message;
-        state.isFetching = false;
-      })
-      .addCase(getCurrentProduct.pending, (state) => {
-        state.isFetching = true;
-      })
-      .addCase(getCurrentProduct.fulfilled, (state, action) => {
-        state.currentProduct = action.payload;
-        state.isFetching = false;
-      })
-      .addCase(getCurrentProduct.rejected, (state, action) => {
-        state.errorMessage = action.error.message;
-        state.isFetching = false;
-      });
-  },
 });
 
 export const {
-  setOpenModal,
   setAlert,
   setOpenAlert,
   setProductsToCart,
   removeProductsFromCart,
   setProductQuantity,
+  setProducts,
 } = productsReducer.actions;
 export default productsReducer.reducer;

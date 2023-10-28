@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 
-const StoreName = ({ storeName }) => {
+const StoreName = React.memo(({ storeName }) => {
   return (
     <Typography
       variant="h6"
@@ -14,6 +14,6 @@ const StoreName = ({ storeName }) => {
       {storeName}
     </Typography>
   );
-};
+});
 
 export default StoreName;

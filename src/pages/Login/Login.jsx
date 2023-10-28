@@ -3,21 +3,36 @@ import LoginForm from './LoginForm';
 import Preloader from '../../components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
 import st from './Login.module.css';
-import { login } from '../../redux-store/reducers/auth-reducer';
-import { useAuthSelector, useProductsSelector } from '../../core/hooks/useMySelectors';
+import { useAuthSelector } from '../../core/hooks/useMySelectors';
+import { useAuthToStoreMutation } from '../../api/apiSlice';
+import { useDispatch } from 'react-redux';
+import { setPersonData, setToken } from '../../redux-store/reducers/auth-reducer';
 
 const Login = () => {
-  const { isFetching } = useProductsSelector();
+  const dispatch = useDispatch();
   const { isAuth } = useAuthSelector();
+  const [logInToStore, { isLoading, data, error, originalArgs, isSuccess, isError }] = useAuthToStoreMutation();
+
+  if (isSuccess) {
+    dispatch(setPersonData(originalArgs));
+    dispatch(setToken(data));
+  }
 
   if (isAuth) return <Navigate to={'/'} />;
 
   return (
     <>
-      {isFetching && <Preloader isFetching={isFetching} />}
+      {isLoading && <Preloader isFetching={isLoading} />}
       <div className={st.loginContainer}>
         <h1>Log in to be able to order in our store</h1>
-        <LoginForm login={login} />
+        {isError && (
+          <h2>
+            {error.originalStatus === 401
+              ? [<span className={st.errorMessage}>{error.data}</span>, '. Try again']
+              : [error.error, '. Check your Internet connection']}
+          </h2>
+        )}
+        <LoginForm logInToStore={logInToStore} />
       </div>
     </>
   );
