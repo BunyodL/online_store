@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import ProductCard from '../ProductCard/ProductCard';
-import AlertMessage from '../common/Alert/AlertMessage';
-import ModalProductCardContainer from '../ModalProductCard/ModalProductCardContainer';
-import { productsOrder } from '../common/CategoriesAndSorting/Sorting/productsOrder';
+import ProductCard from '../productCard/ProductCard';
+import AlertMessage from '../common/alert/AlertMessage';
+import ModalProductCardContainer from '../modalProductCard/ModalProductCardContainer';
+import { productsOrder } from '../common/categoriesAndSorting/sorting/productsOrder';
 import { setSearching } from '../../redux-store/reducers/sequence-reducer';
 import { useDispatch } from 'react-redux';
 import { useSequenceSelector } from '../../core/hooks/useMySelectors';

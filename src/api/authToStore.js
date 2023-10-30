@@ -3,7 +3,7 @@ export const authToStore = (builder) => {
     query: (authData) => ({
       url: 'auth/login',
       method: 'POST',
-      body: { username: authData.email, password: authData.password },
+      body: authData,
     }),
     invalidatesTags: [{ type: 'Auth', id: 'LIST' }],
     transformResponse: (response, meta, arg) => response.token,

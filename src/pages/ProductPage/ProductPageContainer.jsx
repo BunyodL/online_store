@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductPage from './ProductPage';
+import ProductPage from './components/ProductPage';
 import { setProducts } from '../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
-import Preloader from '../../components/common/Preloader/Preloader';
+import Preloader from '../../components/common/preloader/Preloader';
 import { useProductsSelector } from '../../core/hooks/useMySelectors';
 import { setAllCategories } from '../../redux-store/reducers/sequence-reducer';
 import { useGetAllProductsQuery } from '../../api/apiSlice';

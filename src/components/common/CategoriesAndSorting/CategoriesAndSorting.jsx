@@ -1,9 +1,9 @@
 import React from 'react';
-import Categories from './Categories/Categories';
-import Sorting from './Sorting/Sorting';
+import Categories from './categories/Categories';
+import Sorting from './sorting/Sorting';
 import { useDispatch } from 'react-redux';
 import { useSequenceSelector } from '../../../core/hooks/useMySelectors';
-import st from '../../../pages/ProductPage/ProductPage.module.css';
+import st from './styles/CatsAndSorts.module.css';
 import { setSelectedCategories, setSelectedSort } from '../../../redux-store/reducers/sequence-reducer';
 
 const CategoriesAndSorting = React.memo(() => {

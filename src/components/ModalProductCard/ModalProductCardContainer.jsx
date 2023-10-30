@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useModalSelector } from '../../core/hooks/useMySelectors';
 import { setOpenModal } from '../../redux-store/reducers/modal-reducer';
-import ModalProductCard from './ModalProductCard';
+import ModalProductCard from './components/ModalProductCard';
 
 const ModalProductCardContainer = () => {
   const dispatch = useDispatch();

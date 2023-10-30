@@ -1,10 +1,7 @@
 import React from 'react';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import st from '../ProductCard.module.css';
-import CardPhoto from './CardPhoto';
-import CardTitle from './CardTitle';
+import CardPhoto from './components/CardPhoto';
+import CardTitle from './components/CardTitle';
 
 const CardBody = React.memo(({ productId, title, image, handleOpenModal }) => {
   return (

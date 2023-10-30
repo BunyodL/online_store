@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginForm from './LoginForm';
-import Preloader from '../../components/common/Preloader/Preloader';
+import LoginForm from './components/LoginForm';
+import Preloader from '../../components/common/preloader/Preloader';
 import { Navigate } from 'react-router-dom';
-import st from './Login.module.css';
+import st from './styles/Login.module.css';
 import { useAuthSelector } from '../../core/hooks/useMySelectors';
 import { useAuthToStoreMutation } from '../../api/apiSlice';
 import { useDispatch } from 'react-redux';
@@ -11,7 +11,8 @@ import { setPersonData, setToken } from '../../redux-store/reducers/auth-reducer
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuth } = useAuthSelector();
-  const [logInToStore, { isLoading, data, error, originalArgs, isSuccess, isError }] = useAuthToStoreMutation();
+  const [logInToStore, { isLoading, data, error, originalArgs, isSuccess, isError }] =
+    useAuthToStoreMutation();
 
   if (isSuccess) {
     dispatch(setPersonData(originalArgs));
@@ -28,7 +29,12 @@ const Login = () => {
         {isError && (
           <h2>
             {error.originalStatus === 401
-              ? [<span className={st.errorMessage}>{error.data}</span>, '. Try again']
+              ? [
+                  <span key={error.data} className={st.errorMessage}>
+                    {error.data}
+                  </span>,
+                  '. Try again',
+                ]
               : [error.error, '. Check your Internet connection']}
           </h2>
         )}

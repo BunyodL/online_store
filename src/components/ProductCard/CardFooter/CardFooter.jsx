@@ -1,7 +1,7 @@
 import React from 'react';
 import CardActions from '@mui/material/CardActions';
-import LeftSideCardFooter from './LeftSideCardFooter/LeftSideCardFooter';
-import RightSideCardFooter from './RightSideCardFooter/RightSideCardFooter';
+import LeftSide from './leftSide/LeftSide';
+import RightSide from './rightSide/RightSide';
 import { setAlert, setOpenAlert, setProductsToCart } from '../../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
 import { useProductsSelector } from '../../../core/hooks/useMySelectors';
@@ -37,8 +37,8 @@ const CardFooter = ({ productId, rating, price, handleOpenModal }) => {
         fontSize: { lg: 18, md: 17, sm: 15, xs: 10 },
       }}
     >
-      <LeftSideCardFooter price={price} productId={productId} handleOpenModal={handleOpenModal} />
-      <RightSideCardFooter rating={rating} productId={productId} handleAddToCart={handleAddToCart} />
+      <LeftSide price={price} productId={productId} handleOpenModal={handleOpenModal} />
+      <RightSide rating={rating} productId={productId} handleAddToCart={handleAddToCart} />
     </CardActions>
   );
 };

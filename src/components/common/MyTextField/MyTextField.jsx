@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import TextField  from '@mui/material/TextField/TextField';
 import { useDispatch } from 'react-redux';
 
 const MyTextField = React.memo(({ searchText, setSearchText }) => {
@@ -15,7 +15,7 @@ const MyTextField = React.memo(({ searchText, setSearchText }) => {
       id='standard-basic'
       label='Search'
       variant='standard'
-      sx={{ marginBottom: 2, marginTop: 10 }}
+      sx={{ marginBottom: 2, marginTop: { xs: 7, sm: 8, md: 9 } }}
       onChange={handleTextChange}
       value={searchText}
     />
