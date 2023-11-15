@@ -1,8 +1,9 @@
 import React from 'react';
+import st from './styles/Profile.module.css'
 
 const ProfilePage = () => {
   return (
-    <div style={{margin: '150px'}} >
+    <div className={st.profilePage}>
       Profile page
     </div>
   );

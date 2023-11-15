@@ -5,7 +5,6 @@ import MenuList from '@mui/material/MenuList';
 import st from '../../../styles/Cart.module.css';
 
 const CartListMenu = ({
-  handleClose,
   open,
   productsInCart,
   handleRemoveFromCart,
@@ -14,7 +13,6 @@ const CartListMenu = ({
   return (
     <MenuList
       id='cart-menu'
-      onClose={handleClose}
       autoFocusItem={open}
       aria-labelledby='composition-button'
       className={productsInCart.length >= 4 ? st.menuListScroll : null}
@@ -30,7 +28,7 @@ const CartListMenu = ({
               title={p.title}
               quantity={p.quantity}
               price={p.price}
-              image={p.image}
+              images={p.images}
               productId={p.id}
               handleRemoveFromCart={handleRemoveFromCart}
               numberRounding={numberRounding}

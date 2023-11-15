@@ -1,4 +1,4 @@
-export const authToStore = (builder) => {
+export const loginToStore = (builder) => {
   return builder.mutation({
     query: (authData) => ({
       url: 'auth/login',

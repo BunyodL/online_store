@@ -1,22 +1,26 @@
 import React from 'react';
 import st from '../styles/Login.module.css';
+import TextField from '@mui/material/TextField/TextField';
 
 const MyInput = ({ name, type, handleChange, handleBlur, values, errors, touched, placeholder }) => {
   return (
     <div className={st.myInput}>
-      <div className={st.myFormInput}>
-        <label htmlFor={name}>{name}:</label>
-        <input
-          type={type}
-          name={name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values}
-          placeholder={placeholder}
-        />
-      </div>
-      {errors && touched && errors}
+      <TextField
+        className={st.myFormInput}
+        fullWidth
+        id={name}
+        name={name}
+        label={name}
+        value={values}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        placeholder={placeholder}
+        type={type}
+        error={errors}
+        helperText={touched && errors}
+      />
     </div>
+
   );
 };
 

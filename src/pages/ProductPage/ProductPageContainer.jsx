@@ -4,20 +4,20 @@ import { setProducts } from '../../redux-store/reducers/products-reducer';
 import { useDispatch } from 'react-redux';
 import Preloader from '../../components/common/preloader/Preloader';
 import { useProductsSelector } from '../../core/hooks/useMySelectors';
-import { setAllCategories } from '../../redux-store/reducers/sequence-reducer';
 import { useGetAllProductsQuery } from '../../api/apiSlice';
-// import { Navigate } from 'react-router-dom';
 
 const ProductPageContainer = () => {
   const dispatch = useDispatch();
-  const { products } = useProductsSelector();
+  const {
+    products,
+    pagination: { currentPage, limit },
+  } = useProductsSelector();
 
   // getting all products with rtk request
-  const { data = [], isFetching, isSuccess } = useGetAllProductsQuery();
+  const { data = [], isFetching, isSuccess } = useGetAllProductsQuery({offset: (currentPage - 1) * limit, limit });
 
   if (isSuccess) {
     dispatch(setProducts(data));
-    dispatch(setAllCategories(data));
   }
 
   // if (!isAuth) return <Navigate to={'/login'} />;

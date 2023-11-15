@@ -10,45 +10,39 @@ import Divider from '@mui/material/Divider';
 import { NavLink } from 'react-router-dom';
 
 const MenuDrawerBody = React.memo(() => {
+  const pages = {
+    product: {
+      path: '/products',
+      name: 'Products',
+    },
+    cart: {
+      path: '/cart',
+      name: 'Cart',
+    },
+    purchase: {
+      path: '/purchase',
+      name: 'Purchase',
+    }
+  };
+
   return (
     <>
-        <List>
-          <ListItem disablePadding>
-            <ListItemButton component={NavLink} to={'/products'}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Products'} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component={NavLink} to={'/cart'}>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Cart'} />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemButton component={NavLink} to={'/purchase'}>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={'Purchase'} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-      <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {Object.values(pages).map((page, index) => {
+          return (
+            <ListItem key={index} disablePadding>
+              <ListItemButton component={NavLink} to={page.path}>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary={page.name} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })
+        }
       </List>
+      <Divider />
     </>
   );
 });

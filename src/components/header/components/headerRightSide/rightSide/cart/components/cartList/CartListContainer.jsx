@@ -1,27 +1,19 @@
 import React from 'react';
-import { useProductsSelector } from '../../../../../../../../core/hooks/useMySelectors';
 import CartList from './components/CartList';
 import { useDispatch } from 'react-redux';
 import { numberRounding } from './numberRounding';
-import {
-  removeProductsFromCart,
-  setAlert,
-  setOpenAlert,
-} from '../../../../../../../../redux-store/reducers/products-reducer';
+import { removeProductsFromCart } from '../../../../../../../../redux-store/reducers/products-reducer';
+import { useProductsSelector } from '../../../../../../../../core/hooks/useMySelectors';
+import { handleAlertMessage } from '../../../../../../../common/alert/handleAlertMessage';
 
-const CartListContainer = ({ open, anchorRef, handleClose }) => {
+const CartListContainer = ({ open, anchorRef, handleClose, setOpen }) => {
   const { productsInCart } = useProductsSelector();
   const dispatch = useDispatch();
-
-  const handleAlertMessage = (type, message) => {
-    dispatch(setAlert({ type, message }));
-  };
 
   const handleRemoveFromCart = (productId) => {
     if (productsInCart.some((elem) => elem.id === productId)) {
       dispatch(removeProductsFromCart(productId));
-      handleAlertMessage('success', 'Product removed from cart!');
-      dispatch(setOpenAlert(true));
+      handleAlertMessage('success', 'Product removed from cart!', dispatch);
     }
   };
 
@@ -33,6 +25,7 @@ const CartListContainer = ({ open, anchorRef, handleClose }) => {
       anchorRef={anchorRef}
       handleRemoveFromCart={handleRemoveFromCart}
       numberRounding={numberRounding}
+      setOpen={setOpen}
     />
   );
 };

@@ -8,7 +8,7 @@ import st from './styles/CartProduct.module.css';
 const CartProduct = ({
   title,
   price,
-  image,
+  images,
   productId,
   handleRemoveFromCart,
   quantity,
@@ -22,7 +22,7 @@ const CartProduct = ({
         <CartProductContent
           title={title}
           productPrice={productPrice}
-          image={image}
+          image={images[0]}
           numberRounding={numberRounding}
         />
         <Divider />

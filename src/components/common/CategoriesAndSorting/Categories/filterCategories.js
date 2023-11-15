@@ -1,6 +1,6 @@
-export const filterCategories = (products, category) => {
-  if (!category.length) {
+export const filterCategories = (products, categories) => {
+  if (!categories.length) {
     return products;
   }
-  return category.map(item => products.filter(elem => elem.category === item)).flat();
+  return categories.map(item => products.filter(elem => elem.category.name === item)).flat();
 }

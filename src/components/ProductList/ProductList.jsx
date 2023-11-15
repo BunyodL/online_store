@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import ProductCard from '../productCard/ProductCard';
-import AlertMessage from '../common/alert/AlertMessage';
 import ModalProductCardContainer from '../modalProductCard/ModalProductCardContainer';
 import { productsOrder } from '../common/categoriesAndSorting/sorting/productsOrder';
 import { setSearching } from '../../redux-store/reducers/sequence-reducer';
@@ -37,14 +36,12 @@ const ProductList = React.memo(({ products }) => {
             <ProductCard
               productId={i.id}
               title={i.title}
-              image={i.image}
-              rating={i.rating}
+              images={i.images}
               price={i.price}
             />
           </Grid>
         ))}
       </Grid>
-      <AlertMessage />
     </>
   );
 });

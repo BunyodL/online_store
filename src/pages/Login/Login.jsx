@@ -1,43 +1,35 @@
 import React from 'react';
 import LoginForm from './components/LoginForm';
 import Preloader from '../../components/common/preloader/Preloader';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import st from './styles/Login.module.css';
 import { useAuthSelector } from '../../core/hooks/useMySelectors';
-import { useAuthToStoreMutation } from '../../api/apiSlice';
+import { useLoginToStoreMutation } from '../../api/apiSlice';
 import { useDispatch } from 'react-redux';
-import { setPersonData, setToken } from '../../redux-store/reducers/auth-reducer';
+import { setPersonData, setToken, signIn } from '../../redux-store/reducers/auth-reducer';
+import LoginError from './components/LoginError';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isAuth } = useAuthSelector();
   const [logInToStore, { isLoading, data, error, originalArgs, isSuccess, isError }] =
-    useAuthToStoreMutation();
+  useLoginToStoreMutation();
 
   if (isSuccess) {
+    dispatch(signIn());
     dispatch(setPersonData(originalArgs));
     dispatch(setToken(data));
   }
 
-  if (isAuth) return <Navigate to={'/'} />;
+  if (isAuth) return navigate(-1);
 
   return (
     <>
       {isLoading && <Preloader isFetching={isLoading} />}
       <div className={st.loginContainer}>
         <h1>Log in to be able to order in our store</h1>
-        {isError && (
-          <h2>
-            {error.originalStatus === 401
-              ? [
-                  <span key={error.data} className={st.errorMessage}>
-                    {error.data}
-                  </span>,
-                  '. Try again',
-                ]
-              : [error.error, '. Check your Internet connection']}
-          </h2>
-        )}
+        {isError && <LoginError error={error} />}
         <LoginForm logInToStore={logInToStore} />
       </div>
     </>

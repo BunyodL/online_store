@@ -1,15 +1,9 @@
-.cardBasis {
-    outline: 0 solid rgb(0, 0, 0);
-    outline-offset: -1px;
-    transition: outline-width 100ms ease;
+.cardBody {
     cursor: pointer;
-    max-height: 320px;
+    max-height: 300px;
     padding: 0;
-}
-
-.cardBasis:hover,
-.cardBasis:focus {
-    outline-width: 1px;
+    text-decoration: none;
+    color: black;
 }
 
 .leftSide {
@@ -45,7 +39,6 @@
 }
 
 .addButton {
-    /*max-width: 150px;*/
     margin: 0 auto;
 }
 

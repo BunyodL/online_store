@@ -2,13 +2,17 @@ import React from 'react';
 import st from '../ProductCard.module.css';
 import CardPhoto from './components/CardPhoto';
 import CardTitle from './components/CardTitle';
+import { NavLink } from 'react-router-dom';
 
-const CardBody = React.memo(({ productId, title, image, handleOpenModal }) => {
+const CardBody = React.memo(({ productId, title, images }) => {
   return (
-    <div className={st.cardBasis} onClick={() => handleOpenModal(productId)}>
-      <CardPhoto title={title} image={image} />
+    <NavLink
+      className={st.cardBody}
+      to={`${productId}`}
+    >
+      <CardPhoto title={title} images={images} />
       <CardTitle title={title} />
-    </div>
+    </NavLink>
   );
 });
 

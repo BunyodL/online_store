@@ -34,7 +34,7 @@ const Cart = () => {
         handleToggle={handleToggle}
         handleClose={handleClose}
       />
-      <CartListContainer open={open} handleClose={handleClose} anchorRef={anchorRef} />
+      <CartListContainer open={open} setOpen={setOpen} handleClose={handleClose} anchorRef={anchorRef} />
     </>
   );
 };

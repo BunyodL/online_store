@@ -3,7 +3,7 @@ import { CardMedia } from '@mui/material';
 import Typography from '@mui/joy/Typography';
 import st from '../../styles/ModalProductCard.module.css';
 
-const ModalCenterContent = ({ title, image, description }) => {
+const ModalCenterContent = ({ title, images, description }) => {
   return (
     <>
       <div className={st.modalContent}>
@@ -17,7 +17,7 @@ const ModalCenterContent = ({ title, image, description }) => {
           }}
           component='img'
           alt={title}
-          image={image}
+          image={images[0]}
         />
       </div>
       <Typography sx={{ fontSize: { lg: 16, md: 14, sm: 12, xs: 10 } }} id='modal-desc'>

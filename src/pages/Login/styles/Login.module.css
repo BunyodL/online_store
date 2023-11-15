@@ -16,10 +16,10 @@
 
 .form {
   box-sizing: border-box;
-  width: 300px;
-  background-color: #eee;
-  padding: 12px;
-  border-radius: 10px;
+  width: 400px;
+  padding: 42px 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(25, 118, 210, 0.2);
 }
 
 .form h1 {
@@ -27,7 +27,7 @@
 }
 
 .myInput {
-  margin-bottom: 4px;
+  margin-bottom: 18px;
   color: rgb(254, 94, 8);
 }
 
@@ -41,11 +41,11 @@
 .myInput input,
 .form button {
   display: block;
-  margin: 10px auto;
+  margin: 12px auto;
   box-sizing: border-box;
   padding: 10px;
-  width: 90%;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 5px;
   border: 0;
   outline: 0;
   font-size: 20px;

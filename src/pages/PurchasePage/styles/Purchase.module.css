@@ -1,0 +1,19 @@
+.purchasePage {
+  display: grid;
+  grid-template-columns: 3.5fr 1.5fr;
+  margin-top: 80px;
+  gap: 15px;
+}
+
+.purchaseList {
+  display: grid;
+  gap: 15px;
+}
+
+.check {
+  max-height: 300px;
+  position: sticky;
+  top: 80px;
+}
+
+

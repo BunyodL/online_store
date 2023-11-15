@@ -4,11 +4,19 @@ import Sorting from './sorting/Sorting';
 import { useDispatch } from 'react-redux';
 import { useSequenceSelector } from '../../../core/hooks/useMySelectors';
 import st from './styles/CatsAndSorts.module.css';
-import { setSelectedCategories, setSelectedSort } from '../../../redux-store/reducers/sequence-reducer';
+import { setAllCategories, setSelectedCategories, setSelectedSort } from '../../../redux-store/reducers/sequence-reducer';
+import { useGetCategoriesQuery } from '../../../api/apiSlice';
 
 const CategoriesAndSorting = React.memo(() => {
-  const { selectedCategories, selectedSort, allCategories } = useSequenceSelector();
   const dispatch = useDispatch();
+  const {data = [], isSuccess} = useGetCategoriesQuery();
+  
+  if (isSuccess) {
+    // setting products' categories to array
+    dispatch(setAllCategories(data));
+  }
+
+  const { selectedCategories, selectedSort, allCategories } = useSequenceSelector();
 
   const handleCategoryChange = (event) => {
     const {

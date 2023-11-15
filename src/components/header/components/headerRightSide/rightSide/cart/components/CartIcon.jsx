@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { useProductsSelector } from '../../../../../../../core/hooks/useMySelectors';
 
-const CartIcon = ({ TrashIcon, title, anchorRef, handleToggle, handleClose }) => {
+const CartIcon = React.memo(({ TrashIcon, title, anchorRef, handleToggle, handleClose }) => {
   const { productsInCart } = useProductsSelector();
 
   return (
@@ -22,6 +22,6 @@ const CartIcon = ({ TrashIcon, title, anchorRef, handleToggle, handleClose }) =>
         {title}
     </>
   );
-};
+});
 
 export default CartIcon;

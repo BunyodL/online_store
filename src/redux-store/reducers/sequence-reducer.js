@@ -13,8 +13,8 @@ const sequenceReducer = createSlice({
   reducers: {
     setAllCategories(state, action) {
       action.payload.forEach((elem) => {
-        if (!state.allCategories.includes(elem.category)) {
-          state.allCategories.push(elem.category);
+        if (!state.allCategories.includes(elem.name)) {
+          state.allCategories.push(elem.name);
         }
       });
     },

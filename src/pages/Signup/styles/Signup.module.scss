@@ -1,0 +1,51 @@
+$base-border-color: rgba(25, 118, 210, 0.2);
+
+.signupContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.signupForm {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-sizing: border-box;
+  border: 2px solid $base-border-color;
+  border-radius: 5px;
+}
+
+.formHeader {
+  grid-column: 1/5;
+}
+
+.input {
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    align-items: flex-start;
+  }
+
+  input[name='username'] {
+    grid-column: 1/4;
+  }
+
+  p {
+    color: red;
+    font-size: 14px;
+  }
+}
+
+.submitInput {
+  padding: 6px 4px;
+  font-size: 18px;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 35px;
+}

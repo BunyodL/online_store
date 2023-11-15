@@ -5,24 +5,16 @@ import CategoriesAndSorting from '../../../components/common/categoriesAndSortin
 import MyTextField from '../../../components/common/myTextField/MyTextField';
 import {
   setSearchText,
-  setAllCategories,
   setProductsBasedOnCategories,
 } from '../../../redux-store/reducers/sequence-reducer';
 import { useDispatch } from 'react-redux';
 import { filterCategories } from '../../../components/common/categoriesAndSorting/categories/filterCategories';
+import MyPagination from '../../../components/common/pagination/MyPagination';
 
 const ProductPage = ({ products }) => {
   const dispatch = useDispatch();
   const { errorMessage } = useProductsSelector();
   const { searchText, selectedCategories, productsBasedOnCategories } = useSequenceSelector();
-
-  // setting products categories to array
-  React.useEffect(() => {
-    console.log('SET CATEGORIES');
-    if (products) {
-      dispatch(setAllCategories(products));
-    }
-  }, [products, dispatch]);
 
   // filtering products by category
   React.useEffect(() => {
@@ -39,6 +31,7 @@ const ProductPage = ({ products }) => {
         <>
           <MyTextField searchText={searchText} setSearchText={setSearchText} />
           <CategoriesAndSorting />
+          <MyPagination count={8} />
           <ProductList products={productsBasedOnCategories} />
         </>
       )}
