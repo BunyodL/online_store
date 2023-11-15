@@ -6,7 +6,10 @@ export const authToStore = (builder) => {
       body: authData,
     }),
     invalidatesTags: [{ type: 'Auth', id: 'LIST' }],
-    transformResponse: (response, meta, arg) => response.token,
+    transformResponse: (response, meta, arg) => {
+      localStorage.setItem('token', response.token)
+      return response.token
+    },
     transformErrorResponse: (response, meta, arg) => response,
   });
 };
